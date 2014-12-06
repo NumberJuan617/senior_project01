@@ -11,4 +11,8 @@ class MainStaticPagesController < ApplicationController
   	
   end
 
+  def about
+
+  end
+  
 end
