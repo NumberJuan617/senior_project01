@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'main_static_pages/home'
+
+  get 'main_static_pages/recipe'
+
+  get 'main_static_pages/resources'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
