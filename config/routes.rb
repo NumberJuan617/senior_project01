@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'main_static_pages/resources'
 
-    get 'main_static_pages/about'
+  get 'main_static_pages/about'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
