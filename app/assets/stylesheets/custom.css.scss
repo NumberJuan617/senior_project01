@@ -59,8 +59,13 @@ p {
 
 
 /* header */
-
-#logo {
+#logoh
+{
+  float: left;
+  margin-top: 13px;
+}
+#logo 
+{
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
@@ -77,24 +82,30 @@ p {
 
 /* footer */
 
-footer {
+footer 
+{
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
+  border-top: 2px solid $gray-medium-light;
   color: $gray-light;
-  a {
+  a
+  {
     color: $gray;
-    &:hover {
+    &:hover 
+    {
       color: $gray-darker;
     }
   }
-  small {
+  small 
+  {
     float: left;
   }
-  ul {
+  ul 
+  {
     float: right;
     list-style: none;
-    li {
+    li 
+    {
       float: left;
       margin-left: 15px;
     }
