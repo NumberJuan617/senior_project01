@@ -1,10 +1,14 @@
 <% provide(:title, "Home") %>
-<h1>Home Page</h1>
-<p>
- The home page will show recent news acquired from friends, groups, sports, interests, and what ever other sources the user specifies in their account. 
-</p>
+<div class="center jumbotron">
+  <h1>Welcome to My Sweet Spot </h1>
 
-<p>
- Birthday Updates. events, important dates, and friend recommendations will be shown on this page. 
-</p>
+  <h2>
+    This is the home page for the my sweet spot social networking site. The home page will show recent news acquired from friends, groups, sports, interests, and what ever other sources the user specifies in their account. 
 
+    Birthday Updates. events, important dates, and friend recommendations will be shown on this page. 
+  </h2>
+
+  <%= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary" %>
+</div>
+
+<%= link_to image_tag("blue-logo svg.png", alt: "IDF Logo"),'http://www.idf.org/' %>
