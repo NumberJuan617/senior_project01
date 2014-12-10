@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
 
-\
+  get 'users/new'
   root 'main_static_pages#home'
   #main static pages controller routes
   get 'about' => 'main_static_pages#about'
