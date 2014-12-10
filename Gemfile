@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails',                '4.2.0.rc2'
+gem 'unicorn',        '4.8.3'
 gem 'bcrypt',               '3.1.7'
 gem 'bootstrap-sass',       '3.2.0.0'
 gem 'sass-rails',           '5.0.0.beta1'
