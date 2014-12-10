@@ -6,13 +6,13 @@
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages' %>
 
-      <%= f.label :fname %>
+      <%= f.label :FirstName %>
       <%= f.text_field :fname, class: 'form-control' %>
 
-      <%= f.label :lname %>
+      <%= f.label :LastName %>
       <%= f.text_field :lname, class: 'form-control' %>
 
-      <%= f.label :age %>
+      <%= f.label :Age %>
       <%= f.text_field :age, class: 'form-control' %>
 
       <%= f.label :email %>
