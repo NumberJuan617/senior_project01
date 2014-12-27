@@ -1,5 +1,5 @@
 module SessionsHelper
-	# Logs in the given user.
+	# Logs in the given user.RETURNS TRUE IF USER IS LOGGED IN
 	def log_in(user)
 		session[:user_id] = user.id
 	end
@@ -18,7 +18,7 @@ module SessionsHelper
 			user = User.find_by(id: user_id)
 			if user && user.authenticated?(cookies[:remember_token])
 				log_in user
-				@current_user = user
+				@current_user = user#RAILS RETURNS THE LAST LINE GIVEN SO THIS IS THE RETURN TYPE
 			end
 		end
 	end
