@@ -8,6 +8,9 @@
 				<li><%= link_to "Home",   home_path %></li>
 				<li><%= link_to "Recipe",   recipe_path %></li>
 				<li><%= link_to "Resources", resources_path %></li>
+				
+				<!-- If the user is logged in -->
+
 				<% if logged_in? %>
 					<li><%= link_to "Users", '' %></li>
 						<li class="dropdown">
