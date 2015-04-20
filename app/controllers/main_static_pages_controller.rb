@@ -1,6 +1,8 @@
 class MainStaticPagesController < ApplicationController
   def home
-    #home will be its own controller consisting of View all Friends
+    #home will show the parallax bootstrap effect 
+    @users = User.all
+        
   end
 
   def recipe

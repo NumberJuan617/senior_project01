@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	
 	attr_accessor :remember_token
 	before_save { self.email = email.downcase }
 	validates :fname,:lname,  presence: true, length: { maximum: 50 }

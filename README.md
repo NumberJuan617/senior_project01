@@ -25,3 +25,17 @@ This is the first version of the website project.
 DATE UPATED:12/6/14
 
 A project UML needs to  be created for this application 
+
+
+TIME LINE
+Prototype layout design 
+
+
+Finish user functionality with the ability to create, view, edit, and show all users --maybe add ability to delete the profile
+Add friend functionality to have friends, view friends, and delete/add friends
+
+Add interests db, sports db, activities, books, movies, musicians - 
+
+MAIN DATABASE 
+
+add recipes page 
