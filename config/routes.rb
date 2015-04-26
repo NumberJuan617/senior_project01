@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   #user controller routes
   get 'signup' => 'users#new'
   get 'editUser' => 'users#edit'
+  get 'editUserProfile' => 'users#editProfile'
 
   #session controller routes....login sends a GET and POST request 
   get    'login'   => 'sessions#new'

@@ -1,0 +1,17 @@
+
+<div class="row">
+	<h1>Here is where the user will edit their profile content like biography, interests, sports, activities, and so fourth </h1>
+	
+	<h2> Hello <%=@user.fname%>, edit your profile content below such as a biography interests, sports & activities </h2>
+	<div class="col-md-6 col-md-offset-3">
+		 <%= form_for(@user) do |f| %>
+	      <%= render 'shared/error_messages' %>
+
+	      <%= f.label :biography, 'Add a Biography' %>
+	      <%= f.text_area :bio, class: 'form-control' %>
+
+	      <%= f.submit "Add Profile Content", class: "btn btn-primary" %>
+	    <% end %>
+	</div>
+
+</div>

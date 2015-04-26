@@ -42,6 +42,10 @@ class UsersController < ApplicationController
 		
 	end
 
+	def editProfile
+		@user = current_user
+	end
+
 
 
 
