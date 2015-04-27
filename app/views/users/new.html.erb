@@ -11,9 +11,10 @@
 
       <%= f.label :LastName, 'Last Name' %>
       <%= f.text_field :lname, class: 'form-control' %>
-
+      
       <%= f.label :Age, 'Age' %>
-      <%= f.text_field :age, class: 'form-control' %>
+      <%= f.text_field :age, :start_year=>1900 %>
+
 
       <%= f.label :email, 'Email' %>
       <%= f.text_field :email, class: 'form-control' %>

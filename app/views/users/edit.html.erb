@@ -1,8 +1,11 @@
 
 
-<h1>Edit Current User</h1>
 <div class="row">
-	<div class="col-md-6 col-md-offset-3"> 
+
+	<div class="col-md-5 "> 
+
+		<h1>Edit Account</h1>
+
 		<%= form_for(@user) do |f| %>
 			<%= render 'shared/error_messages' %>
 
@@ -18,6 +21,19 @@
 			<%= f.label :email,'Email Address' %>
 			<%= f.text_field :email, class: 'form-control' %>
 
+			<% if @user.bio.nil? %>
+				<%= f.label :biography, 'Add a Biography' %>
+	      		<%= f.text_area :bio, class: 'form-control' %>
+
+	      		<% else %>
+				
+				<%= f.label :biography, 'Edit Biography' %>
+	      		<%= f.text_area :bio, class: 'form-control' %>
+
+			<% end %>
+
+			
+
 			<%= f.label :password,'Password' %>
 			<%= f.password_field :password, class: 'form-control' %>
 
@@ -27,6 +43,39 @@
 
 			<%= f.submit "Save changes", class: "btn btn-primary" %>
 		<% end %>
+	</div>
+
+	<div class="col-md-2 column"></div>
+
+
+	<div class="col-md-5  "> 
+		<div class="row clearfix text-center">
+			<h1>Edit Profile Settings</h1>
+
+			<h2>Show current set of interests, sports, activities etc</h2>
+			<div class="row-md-3 column">
+				<h2>Current Interests</h2>
+				<p>Show the users current interests here</p>
+			</div>
+
+			<div class="row-md-3 column">
+				<h2>Current Activities</h2>
+				<p>Show the users current activities here</p>
+			</div>
+
+			<div class="row-md-3">
+				<h2>Current Sports</h2>
+				<p>Show the users current sports here</p>
+			</div>
+
+			<div class="row-md-3 column"></br></br></br>
+				<%= link_to "Edit your profile", editUserProfile_path, class: "btn btn-lg btn-primary" %>
+
+			</div>
+
+
+
+		</div>
 	</div>
 
 </div>

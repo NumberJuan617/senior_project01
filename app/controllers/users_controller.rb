@@ -42,20 +42,14 @@ class UsersController < ApplicationController
 		
 	end
 
-	def editProfile
-		@user = current_user
-	end
-
-
-
 
 	private
 
     def user_params
-      params.require(:user).permit(:fname, :lname, :age, :email, :password,
+      params.require(:user).permit(:fname, :lname, :age, :email, :bio, :password,
                                    :password_confirmation)
     end
-
+    
 
     # Confirms a logged-in user.
     def logged_in_user

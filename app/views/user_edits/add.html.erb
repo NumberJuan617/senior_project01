@@ -1,0 +1,43 @@
+<% if logged_in? %>
+
+
+	<div class="row clearfix text-center">
+		<h1>Hello <%= @user.fname %> <%= @user.lname %></h1>
+		<h2>This is where you get to add interests, sports, and even activities</h2>
+
+		<div class="col-md-1 column"></div>
+
+		<div class="col-md-3 column">
+			<h2>Interests</h2>
+
+			<p>Interest Drop Down Menu Here</p>
+
+
+		</div>
+
+		<div class="col-md-3 column">
+			<h2>Activities</h2>
+			<p>Activities Drop Down Menu Here</p>
+
+
+
+		</div>
+
+		<div class="col-md-3 column">
+			<h2>Sports</h2>
+			<p>Sports Drop Down Menu Here</p>
+
+
+
+
+		</div>
+
+		<div class="col-md-1 column"></div>
+
+	</div>
+
+	<%else%>
+
+	<h1>Must be logged in to perform these account changes</h1>	
+
+<% end %>
