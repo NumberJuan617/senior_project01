@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   get 'editUser' => 'users#edit'
   #user edits controller routes
-  get 'editUserProfile' =>'user_edits#add'
+  get 'addProfileContent' =>'user_edits#add'
+  get 'manageProfileContent' =>'user_edits#home'
+
 
 
 

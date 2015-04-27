@@ -1,0 +1,68 @@
+<% if logged_in? %>
+
+
+	<div class="row clearfix text-center">
+		<h1>Hello <%= @user.fname %> <%= @user.lname %></h1>
+		<h2>Here are your current sports, activities, and interests you have</h2>
+
+		<div class="col-md-3 column">
+			<h2>Interests</h2>
+
+			<p>Interest Drop Down Menu Here</p>
+
+
+		</div>
+
+		<div class="col-md-3 column">
+			<h2>Activities</h2>
+			<p>Activities Drop Down Menu Here</p>
+
+
+
+		</div>
+
+		<div class="col-md-3 column">
+			<h2>Sports</h2>			
+			<table class= "table table-hover table-condensed  alert alert-info">
+				<tr>
+					<th class="text-center">Sport Name</th>
+				</tr>
+				
+				<% @sports.each do |s| %>
+					<tr>
+						<td>
+							<%= s.name %>
+						</td>
+					</tr>
+				<% end %>
+				
+			</table>
+
+			<div class="row clearfix">
+				<div class="col-md-6">
+					<%= link_to "Add Sports", addProfileContent_path, class: "btn btn-sm btn-primary" %>
+				</div>
+				<div class="col-md-6">
+					<%= link_to "Remove Sports", addProfileContent_path, class: "btn btn-sm btn-primary" %>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="col-md-3 column">
+			<h2>Recipes</h2>
+			<p>Recipes Drop Down Menu Here</p>
+
+
+
+
+		</div>
+
+
+	</div>
+
+	<%else%>
+
+	<h1>Must be logged in to perform these account changes</h1>	
+
+<% end %>
