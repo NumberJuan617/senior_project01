@@ -4,8 +4,8 @@ class UserEditsController < ApplicationController
   	#show all of the users current recipes, sports, interests, activities, and sofourth 
   	@user = current_user
   	@sports = Sport.all
-  	#@interests = Interest.all
-  	#@activities = Activities.all
+  	@interests = Interest.all
+  	@activities = Activity.all
   end
 
   def add

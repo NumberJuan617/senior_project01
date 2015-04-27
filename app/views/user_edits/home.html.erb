@@ -8,15 +8,61 @@
 		<div class="col-md-3 column">
 			<h2>Interests</h2>
 
-			<p>Interest Drop Down Menu Here</p>
+			<table class= "table table-hover table-condensed  alert alert-info">
+				<tr>
+					<th class="text-center">Interests Name</th>
+				</tr>
+				
+				<% @interests.each do |i| %>
+					<tr>
+						<td>
+							<%= i.name %>
+						</td>
+					</tr>
+				<% end %>
+				
+			</table>
 
+			<div class="row clearfix">
+				<div class="col-md-6">
+					<%= link_to "Add Interests", addProfileContent_path, class: "btn btn-sm btn-primary" %>
+				</div>
+				<div class="col-md-6">
+					<%= link_to "Remove Interests", addProfileContent_path, class: "btn btn-sm btn-primary" %>
+				</div>
+			</div>
+
+
+						
 
 		</div>
 
 		<div class="col-md-3 column">
 			<h2>Activities</h2>
-			<p>Activities Drop Down Menu Here</p>
+			
+			<table class= "table table-hover table-condensed  alert alert-info">
+				<tr>
+					<th class="text-center">Activities Name</th>
+				</tr>
+				
+				<% @activities.each do |a| %>
+					<tr>
+						<td>
+							<%= a.name %>
+						</td>
+					</tr>
+				<% end %>
+				
+			</table>
 
+			<div class="row clearfix">
+				<div class="col-md-6">
+					<%= link_to "Add Activities", addProfileContent_path, class: "btn btn-sm btn-primary" %>
+				</div>
+				<div class="col-md-6">
+					<%= link_to "Remove Activities", addProfileContent_path, class: "btn btn-sm btn-primary" %>
+				</div>
+			</div>
 
 
 		</div>
