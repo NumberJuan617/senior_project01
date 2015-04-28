@@ -34,7 +34,7 @@ Prototype layout design
 Finish user functionality with the ability to create, view, edit, and show all users --maybe add ability to delete the profile
 Add friend functionality to have friends, view friends, and delete/add friends
 
-Add interests db, sports db, activities, books, movies, musicians - 
+Add interests db, sports db, activities, books, movies, musicians, religious affiliations, high school, college attending, jobs,  
 
 MAIN DATABASE 
 

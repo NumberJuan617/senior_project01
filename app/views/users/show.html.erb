@@ -1,5 +1,50 @@
 <% provide(:title, @user.fname + " " + @user.lname)%>
 <% if logged_in? %>
+	
+	<div class="row clearfix">
+		<div class="col-md-5 jumbotron">
+			<!-- In this column, all of the users information will be displayed.
+				This also includes their sports, interests, and activities, religious point of views, 
+				gender, mobile phones, websites associated, languages, movies, tv shows, music, books, groups
+				
+				In this columb we can messsage the user, send a friend request or follow action, 
+	
+			 -->
+
+			<section class="user_info">
+				<p>
+					<%= gravatar_for @user %> 
+					<%= @user.fname %>, <%= @user.lname %>, <%= @user.age %>
+				</p>
+			</section>
+
+
+		</div>
+
+		<div class="col-md-5">
+			<!-- This column shows the users posts, recipes tab, groups associated to them -->			
+
+
+		</div>
+	</div>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<div class="row">
 	  <aside class="col-md-4">
