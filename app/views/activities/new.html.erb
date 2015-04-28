@@ -1,0 +1,36 @@
+<% if logged_in? %>				
+
+	<h1>Add an Activity</h1>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<%= link_to "Go Back", manageProfileContent_path, class: "btn btn-sm btn-primary" %>
+			<%= link_to "View Profile", current_user, class: "btn btn-sm btn-primary" %>
+
+		</div>
+
+	</div>
+
+	<div class="row">
+	  <div class="col-md-6 col-md-offset-3">  
+		<%= form_for (@activity) do |f| %>
+			<%= render 'shared/error_messages_activity'%>
+
+			<%= f.label :name,'Enter the Interest to add' %>
+			<%= f.text_field :name, class: 'form-control' %>
+
+			<%= f.submit "Create Activity", class:"btn btn-primary" %>
+		<% end %>
+
+			
+
+	
+	  </div>
+	</div>
+
+<% else %>
+	
+	<h1>Must be a user to add activity</h1>
+
+<% end %>
+
+<!-- TEMPORARILY REPRESENTS AN EBOARD" -->

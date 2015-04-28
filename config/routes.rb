@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'sports/new'
+
+  get 'activities/new'
+
   get 'sessions/new'
 
   get 'users/new'
@@ -21,15 +25,27 @@ Rails.application.routes.draw do
   get 'manageProfileContent' =>'user_edits#home'
 
 
+  #following three  routes below may not be used 
 
+    #user interests
+    get 'addInterest' => 'interests#new'
+
+    #user activity
+    get 'addActivity' => 'activities#new'
+
+    #user sport
+    get 'addSport' => 'sports#new'
 
   #session controller routes....login sends a GET and POST request 
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'#post command 'sends all form submition data' to the user
   delete 'logout'  => 'sessions#destroy'
 
+  
+
   #resources utilized ith user model. This must include the users_helper helper files 
-  resources :users
+  resources :users, :interests, :activities, :sports
+
 end
 
 

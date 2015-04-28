@@ -1,48 +1,64 @@
 <% if logged_in? %>
-
-
 	<div class="row clearfix text-center">
 		<h1>Hello <%= @user.fname %> <%= @user.lname %></h1>
 		<h2>Here are your current sports, activities, and interests you have</h2>
 
-		<div class="col-md-3 column">
+		<div class="col-md-2 column"> <!-- Interest-->
 			<h2>Interests</h2>
+
+			<div class="row clearfix">
+				<%= form_for (@interest) do |f| %>
+					<%= render 'shared/error_messages_interest'%>
+
+					<%= f.label :name,'Enter Interest' %>
+					<%= f.text_field :name, class: 'form-control' %>
+
+					<%= f.submit "Add Interest", class:"btn btn-primary" %>
+				<% end %>
+			</div>
 
 			<table class= "table table-hover table-condensed  alert alert-info">
 				<tr>
 					<th class="text-center">Interests Name</th>
+					<th class="text-center alert alert-danger"><b>DEL</b></th>
 				</tr>
-				
 				<% @interests.each do |i| %>
 					<tr>
 						<td>
 							<%= i.name %>
+						</td>
+						<td class="alert alert-danger">
+							<%=
+								link_to 'X', i, method: :delete
+							%>
 						</td>
 					</tr>
 				<% end %>
 				
 			</table>
 
-			<div class="row clearfix">
-				<div class="col-md-6">
-					<%= link_to "Add Interests", addProfileContent_path, class: "btn btn-sm btn-primary" %>
-				</div>
-				<div class="col-md-6">
-					<%= link_to "Remove Interests", addProfileContent_path, class: "btn btn-sm btn-primary" %>
-				</div>
-			</div>
-
-
-						
-
+			
 		</div>
 
-		<div class="col-md-3 column">
+		<div class="col-md-2 column">
 			<h2>Activities</h2>
+
+			<div class="row clearfix">
+					<%= form_for (@activity) do |f| %>
+						<%= render 'shared/error_messages_activity'%>
+
+						<%= f.label :name,'Enter Activity' %>
+						<%= f.text_field :name, class: 'form-control' %>
+
+						<%= f.submit "Add Activity", class:"btn btn-primary" %>
+					<% end %>
+			</div>
 			
 			<table class= "table table-hover table-condensed  alert alert-info">
 				<tr>
 					<th class="text-center">Activities Name</th>
+					<th class="text-center alert alert-danger"><b>DEL</b></th>
+
 				</tr>
 				
 				<% @activities.each do |a| %>
@@ -50,49 +66,52 @@
 						<td>
 							<%= a.name %>
 						</td>
+						<td class="alert alert-danger">
+							<%=
+								link_to 'X', a, method: :delete
+							%>
+						</td>
 					</tr>
 				<% end %>
+
 				
 			</table>
-
-			<div class="row clearfix">
-				<div class="col-md-6">
-					<%= link_to "Add Activities", addProfileContent_path, class: "btn btn-sm btn-primary" %>
-				</div>
-				<div class="col-md-6">
-					<%= link_to "Remove Activities", addProfileContent_path, class: "btn btn-sm btn-primary" %>
-				</div>
-			</div>
-
-
 		</div>
 
-		<div class="col-md-3 column">
+		<div class="col-md-2 column">
 			<h2>Sports</h2>			
 			<table class= "table table-hover table-condensed  alert alert-info">
 				<tr>
 					<th class="text-center">Sport Name</th>
+					<th class="text-center alert alert-danger"><b>DEL</b></th>
+
 				</tr>
+
+				<div class="row clearfix">
+					<%= form_for (@sport) do |f| %>
+						<%= render 'shared/error_messages_sport'%>
+
+						<%= f.label :name,'Enter Sport' %>
+						<%= f.text_field :name, class: 'form-control' %>
+
+						<%= f.submit "Add Sport", class:"btn btn-primary" %>
+					<% end %>
+				</div>
 				
 				<% @sports.each do |s| %>
 					<tr>
 						<td>
 							<%= s.name %>
 						</td>
+						<td class="alert alert-danger">
+							<%=
+								link_to 'X', s, method: :delete
+							%>
+						</td>
 					</tr>
 				<% end %>
 				
 			</table>
-
-			<div class="row clearfix">
-				<div class="col-md-6">
-					<%= link_to "Add Sports", addProfileContent_path, class: "btn btn-sm btn-primary" %>
-				</div>
-				<div class="col-md-6">
-					<%= link_to "Remove Sports", addProfileContent_path, class: "btn btn-sm btn-primary" %>
-				</div>
-			</div>
-			
 		</div>
 
 		<div class="col-md-3 column">

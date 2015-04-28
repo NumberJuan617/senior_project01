@@ -3,6 +3,13 @@ class UserEditsController < ApplicationController
   	#method where the user will be able to see the content on their profile and get directed to the right location
   	#show all of the users current recipes, sports, interests, activities, and sofourth 
   	@user = current_user
+    #user information to add within the page
+    @interest = Interest.new
+    @activity = Activity.new
+    @sport = Sport.new
+
+
+
   	@sports = Sport.all
   	@interests = Interest.all
   	@activities = Activity.all
