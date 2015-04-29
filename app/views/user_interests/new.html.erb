@@ -1,0 +1,11 @@
+<div class="row clearfix">
+	<%= form_for (@userInterest) do |f| %>
+
+		<%= f.label :Interest,'Select the Interest' %>
+		<%= f.select(:interest_id, @interestOptions) %>
+
+		<%= f.hidden_field :user_id, :value =>@user.id %>
+
+		<%= f.submit "Add Interest", class:"btn btn-primary" %>
+	<% end %>
+</div>		

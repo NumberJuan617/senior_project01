@@ -6,23 +6,14 @@
 		<div class="col-md-2 column"> <!-- Interest-->
 			<h2>Interests</h2>
 
-			<div class="row clearfix">
-				<%= form_for (@interest) do |f| %>
-					<%= render 'shared/error_messages_interest'%>
-
-					<%= f.label :name,'Enter Interest' %>
-					<%= f.text_field :name, class: 'form-control' %>
-
-					<%= f.submit "Add Interest", class:"btn btn-primary" %>
-				<% end %>
-			</div>
+			<%=link_to 'Add Interest', addInterest_path, class:"btn btn-primary" %>
 
 			<table class= "table table-hover table-condensed  alert alert-info">
 				<tr>
 					<th class="text-center">Interests Name</th>
 					<th class="text-center alert alert-danger"><b>DEL</b></th>
 				</tr>
-				<% @interests.each do |i| %>
+				<% @userInterests.each do |i| %>
 					<tr>
 						<td>
 							<%= i.name %>

@@ -24,7 +24,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     @activity.destroy
     redirect_to manageProfileContent_path
-    flash[:success] = "activity deleted"
+    flash[:success] = "Activity deleted"
 
   else
      flash[:error] = "Failed to remove activity"

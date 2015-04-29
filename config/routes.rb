@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'sports/new'
-
-  get 'activities/new'
-
   get 'sessions/new'
 
   get 'users/new'
@@ -27,8 +23,9 @@ Rails.application.routes.draw do
 
   #following three  routes below may not be used 
 
-    #user interests
-    get 'addInterest' => 'interests#new'
+    #user interests bridge
+    get 'addInterest' => 'user_interests#new'
+
 
     #user activity
     get 'addActivity' => 'activities#new'
@@ -44,7 +41,7 @@ Rails.application.routes.draw do
   
 
   #resources utilized ith user model. This must include the users_helper helper files 
-  resources :users, :interests, :activities, :sports
+  resources :users, :interests, :activities, :sports, :user_interests
 
 end
 
