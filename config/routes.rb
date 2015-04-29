@@ -28,7 +28,9 @@ Rails.application.routes.draw do
 
 
     #user activity
-    get 'addActivity' => 'activities#new'
+    #get 'addActivity' => 'activities#new'
+    
+    get 'addActivity' => 'user_activities#new'
 
     #user sport
     get 'addSport' => 'sports#new'
@@ -41,7 +43,7 @@ Rails.application.routes.draw do
   
 
   #resources utilized ith user model. This must include the users_helper helper files 
-  resources :users, :interests, :activities, :sports, :user_interests
+  resources :users, :interests, :activities, :sports, :user_interests, :user_activities
 
 end
 
