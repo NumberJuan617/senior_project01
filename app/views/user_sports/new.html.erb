@@ -1,9 +1,9 @@
 <div class="row clearfix">
 	<div class="col-md-6 col-md-offset-3">
-		<%= form_for (@userActivity) do |f| %>
+		<%= form_for (@userSport) do |f| %>
 
-			<%= f.label :Activity,'Select the Activity' %>
-			<%= f.select(:activity_id, @userActivityOptions) %>
+			<%= f.label :Sport,'Select the Sport' %>
+			<%= f.select(:sport_id, @userSportOptions) %>
 
 			<%= f.hidden_field :user_id, :value =>@user.id %>
 

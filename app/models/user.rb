@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
 	has_many :user_activities
 	has_many :activities, through: :user_activities
 
-
+	has_many :user_sports
+	has_many :sports, through: :user_sports
 
 
 

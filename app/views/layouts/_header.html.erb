@@ -1,77 +1,36 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-	<div class="container">
-		<%= link_to image_tag("blue-logo-h.png", alt: "IDF Logo"),'http://www.idf.org/', id: "logoh" %>
-
-		<%= link_to "My Sweet Spot", home_path, id: "logo" %>
-		<nav>
-			<ul class="nav navbar-nav pull-right navbar-collapse">
-				
-
-				<% if notLogged_in? %>
-
-							
-
-				<% end %>
-
-				<!-- If the user is logged in -->
-
-				<% if logged_in? %>
-					<li><%= link_to "Home",   home_path %></li>
-					<li><%= link_to "Users",   users_path %></li>
-
-					<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Recipes <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><%= link_to "My Recipes",   recipe_path %></li>
-								<li><%= link_to "Friend Recipes",   recipe_path %></li>
-								<li><%= link_to "All Recipes",   recipe_path %></li>
-
-							</ul>
-					</li>
-
-					<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Profile <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><%= link_to "Profile", current_user %></li>
-								<li><%= link_to "Manage Profile", manageProfileContent_path %></li>
-							</ul>
-					</li>
-					
-					<li><%= link_to "Notifications" %></li>
-
-					
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Account <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><%= link_to "Account Administration", editUser_path %></li>
-							<li><%= link_to "Resources", resources_path %></li>
-
-							<li class="divider"></li>
-							<li>
-							<%= link_to "Log out", logout_path, method: "delete" %>
-							</li>
-						</ul>
-					</li>
-
-				<% else %>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> My Sweet Spot <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><%= link_to "Home",   home_path %></li>
-							<li class="divider"></li>
-							<li><%=link_to "Resources", resources_path %></li>
-							<li class="divider"></li>
-							<li><%=link_to "About", about_path %></li>
-
-						</ul>
-					</li>
-
-					<li><%= link_to "Log in", login_path %></li>
-
-				<% end %>
-
-
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<ul class="nav nav-pills">
+				<li class="active">
+					<a href="#">Home</a>
+				</li>
+				<li>
+					<a href="#">Profile</a>
+				</li>
+				<li class="disabled">
+					<a href="#">Messages</a>
+				</li>
+				<li class="dropdown pull-right">
+					 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown<strong class="caret"></strong></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">Action</a>
+						</li>
+						<li>
+							<a href="#">Another action</a>
+						</li>
+						<li>
+							<a href="#">Something else here</a>
+						</li>
+						<li class="divider">
+						</li>
+						<li>
+							<a href="#">Separated link</a>
+						</li>
+					</ul>
+				</li>
 			</ul>
-		</nav>
+		</div>
 	</div>
-</header>
+</div>

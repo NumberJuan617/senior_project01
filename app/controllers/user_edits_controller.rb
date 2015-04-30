@@ -5,16 +5,10 @@ class UserEditsController < ApplicationController
   	@user = current_user
     @userInterestsBoard = @user.user_interests
     @userActivitiesBoard = @user.user_activities
+    @userSportsBoard = @user.user_sports
 
     #user information to add within the page
-    @activity = Activity.new
-    @sport = Sport.new
 
-
-
-  	@sports = Sport.all
-  	@interests = Interest.all
-  	@activities = Activity.all
   end
 
   def add

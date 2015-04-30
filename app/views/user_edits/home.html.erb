@@ -66,6 +66,8 @@
 
 		<div class="col-md-2 column">
 			<h2>Sports</h2>			
+			<%=link_to 'Add Sport', addSport_path, class:"btn btn-primary" %>
+
 			<table class= "table table-hover table-condensed  alert alert-info">
 				<tr>
 					<th class="text-center">Sport Name</th>
@@ -73,21 +75,10 @@
 
 				</tr>
 
-				<div class="row clearfix">
-					<%= form_for (@sport) do |f| %>
-						<%= render 'shared/error_messages_sport'%>
-
-						<%= f.label :name,'Enter Sport' %>
-						<%= f.text_field :name, class: 'form-control' %>
-
-						<%= f.submit "Add Sport", class:"btn btn-primary" %>
-					<% end %>
-				</div>
-				
-				<% @sports.each do |s| %>
+				<% @userSportsBoard.each do |s| %>
 					<tr>
 						<td>
-							<%= s.name %>
+							<%= s.sport.name %>
 						</td>
 						<td class="alert alert-danger">
 							<%=
@@ -96,7 +87,7 @@
 						</td>
 					</tr>
 				<% end %>
-				
+
 			</table>
 		</div>
 
