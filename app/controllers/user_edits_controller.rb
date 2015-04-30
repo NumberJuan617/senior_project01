@@ -6,6 +6,9 @@ class UserEditsController < ApplicationController
     @userInterestsBoard = @user.user_interests
     @userActivitiesBoard = @user.user_activities
     @userSportsBoard = @user.user_sports
+    @userMoviesBoard = @user.user_movies
+
+    @movies = Movie.all
 
     #user information to add within the page
 
@@ -14,9 +17,6 @@ class UserEditsController < ApplicationController
   def add
   	#method where the user will be able to add interests, sports, activities, and sofourth 
 
-  	#data may end up within def new depending on how this controller is utilized 
-  	@user = current_user
-  	@sports = Sport.all
 
   end
 

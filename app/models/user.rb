@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
 	has_many :user_sports
 	has_many :sports, through: :user_sports
 
+	has_many :user_movies
+	has_many :movies, through: :user_movies
+
 
 
 

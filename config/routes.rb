@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
- 
+  get 'user_movies/new'
+
   get 'sessions/new'
 
   get 'users/new'
@@ -25,17 +26,19 @@ Rails.application.routes.draw do
   #following three  routes below may not be used 
 
     #user interests bridge
+    get 'addNewInterest' => 'interests#new'
     get 'addInterest' => 'user_interests#new'
-
-
-    #user activity
-    #get 'addActivity' => 'activities#new'
     
+    #user activity
+    get 'addNewActivity' => 'activities#new'   
     get 'addActivity' => 'user_activities#new'
-
+    
     #user sport
-    #get 'addSport' => 'sports#new'
+    get 'addNewSport' => 'sports#new'
     get 'addSport' => 'user_sports#new'
+    #user movie
+    get 'addNewMovie' => 'movies#new'
+    get 'addMovie' => 'user_movies#new'
 
   #session controller routes....login sends a GET and POST request 
   get    'login'   => 'sessions#new'
@@ -45,7 +48,7 @@ Rails.application.routes.draw do
   
 
   #resources utilized ith user model. This must include the users_helper helper files 
-  resources :users, :interests, :activities, :sports, :user_interests, :user_activities, :user_sports
+  resources :users, :interests, :activities, :sports, :movies, :user_interests, :user_activities, :user_sports, :user_movies
 
 end
 

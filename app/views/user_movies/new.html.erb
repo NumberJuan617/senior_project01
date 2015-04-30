@@ -1,0 +1,20 @@
+<div class="row clearfix">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for (@userMovie) do |f| %>
+
+			<%= f.label :Movie,'Select the Activity' %>
+			<%= f.select(:movie_id, @userMovieOptions) %>
+
+			<%= f.hidden_field :user_id, :value =>@user.id %>
+
+
+			<%= f.submit "Add Movie", class:"btn btn-primary" %>
+
+			<h1>Add a new Movie instead</h1>
+
+			<%=link_to 'Add New Movie', addNewMovie_path, class:"btn btn-primary" %>
+
+		<% end %>	
+	</div>
+	
+</div>		
