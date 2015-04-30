@@ -2,6 +2,11 @@
 <% if logged_in? %>
 	
 	<div class="row clearfix">
+
+		<% if _firstTimer?  %>
+			<p> First Time User?  Edit your profile!</p>
+		<% end %>
+
 		<div class="col-md-3 column">
 			<!-- This will contain the users profile information and content-->
 			<div class="row ">
@@ -14,14 +19,47 @@
 					<!--User name, last name, age, & gender for now -->
 					<div class="row"><b><%= @user.fname %> <%= @user.lname %></b></div>
 					<div class="row">Age: <b><%= @user.age%></b> Gender: <b> <%= @user.gender %></b></div>
+
+					<div class="row"><b>Address:</b>
+
+
+					</div>
 				</div>
 			</div>
-				<h2>Profile Information</h2>
+			
 
-			<div class="row jumbotron">
-				<!-- User profile content -->
+			<h2>Profile Information</h2>
 
+
+
+			<div class="row lert alert-info text-center ">
+			<!-- User profile content -->
+				<h2>Activities</h2>
+				<% @userActivities.each do |ua| %>
+					<u><%= ua.activity.name %></u> ,
+				<% end %>
+
+				<h2>Interests</h2>
+				<% @userInterests.each do |ui| %>
+					<u><%= ui.interest.name %></u>  ,
+				<% end %>
+
+				<h2>Sports</h2>
+				<% @userSports.each do |us| %>
+					<u><%= us.sport.name %></u>  ,
+				<% end %>
+
+				<h2>Movies</h2>
+				<% @userMovies.each do |um| %>
+					<u><%= um.movie.name %></u>  ,
+				<% end %>
+
+				<h2>Books</h2>
+				<% @userBooks.each do |ub| %>
+					<u><%= ub.book.name %></u>  ,
+				<% end %>
 			</div>
+			
 
 		</div>
 		<div class="col-md-1 column "></div>

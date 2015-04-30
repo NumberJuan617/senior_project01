@@ -6,4 +6,10 @@ module UsersHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
     image_tag(gravatar_url, alt: user.fname, class: "gravatar")
   end
+
+
+  def _firstTimer?
+	@firstTimer = true;
+  end
+
 end

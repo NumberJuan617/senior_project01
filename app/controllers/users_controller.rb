@@ -2,12 +2,22 @@ class UsersController < ApplicationController
 	before_action :logged_in_user, only: [:index, :edit, :update]#only permit the user to edit and update their profile if they are logged in
   	before_action :correct_user,   only: [:edit, :update]#ensures the correct user before editing anyone
 
+  	include UsersHelper
+  	
   	def index
   		@users = User.all#gathers all of the users in the db model
   	end
 
 	def show
 		@user = User.find(params[:id])
+		#user profile content below
+
+		@userActivities = @user.user_activities.all
+		@userInterests = @user.user_interests.all
+		@userSports = @user.user_sports.all
+		@userMovies = @user.user_movies.all
+		@userBooks = @user.user_books.all
+
 		#debugger
 	end
 
@@ -20,7 +30,7 @@ class UsersController < ApplicationController
 		if @user.save
 			# Handle a successful save.
 			log_in @user
-	      	flash[:success] = "Welcome to the Sample App!"
+	      	flash[:success] = "Welcome to the My Sweet Spot"
 			redirect_to @user
 		else
 			render 'new'
@@ -44,6 +54,8 @@ class UsersController < ApplicationController
 
 
 	private
+
+	
 
     def user_params
       params.require(:user).permit(:fname, :lname, :age, :email, :bio, :street, :gender, :state, :zip, :password,
