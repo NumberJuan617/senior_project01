@@ -1,9 +1,12 @@
-<div class="container">
-	<div class="row clearfix">
-		<div class="col-md-12 column">
-			<ul class="nav nav-pills">
+<header class="navbar navbar-inverse navbar-fixed-top">
+
+	<div class="container">
+	<%= link_to image_tag("blue-logo-h.png", alt: "IDF Logo"),'http://www.idf.org/', id: "logoh" %>
+	<%= link_to "My Sweet Spot", home_path, id: "logo" %>
+			<ul class="nav nav-pills navbar-inverse">
 				<li class="active">
-					<a href="#">Home</a>
+					<li><%= link_to "Home",   home_path %></li>
+					<li><%= link_to "Users",   users_path %></li>
 				</li>
 				<li>
 					<a href="#">Profile</a>
@@ -31,6 +34,6 @@
 					</ul>
 				</li>
 			</ul>
-		</div>
 	</div>
-</div>
+
+</header>
