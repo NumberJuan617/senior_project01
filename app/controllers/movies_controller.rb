@@ -16,14 +16,14 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-	if !(params[:id].nil?) #if what we are going to delete is not nil or null
-		@movie = Movie.find(params[:id])
-		@movie.destroy
-		redirect_to manageProfileContent_path
-		flash[:success] = "Movie deleted"
-	else
-		flash[:error] = "Failed to remove movie"
-	end	
+  	if !(params[:id].nil?) #if what we are going to delete is not nil or null
+  		@movie = Movie.find(params[:id])
+  		@movie.destroy
+  		redirect_to manageProfileContent_path
+  		flash[:success] = "Movie deleted"
+  	else
+  		flash[:error] = "Failed to remove movie"
+  	end	
   end
 
 

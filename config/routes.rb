@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'books/new'
+
+  get 'books/create'
+
+  get 'books/destroy'
+
   get 'user_movies/new'
 
   get 'sessions/new'
@@ -36,9 +42,16 @@ Rails.application.routes.draw do
     #user sport
     get 'addNewSport' => 'sports#new'
     get 'addSport' => 'user_sports#new'
+
     #user movie
     get 'addNewMovie' => 'movies#new'
     get 'addMovie' => 'user_movies#new'
+
+    #user movie
+    get 'addNewBook' => 'books#new'
+    #get 'addBook' => 'user_books#new'
+
+
 
   #session controller routes....login sends a GET and POST request 
   get    'login'   => 'sessions#new'
@@ -48,7 +61,8 @@ Rails.application.routes.draw do
   
 
   #resources utilized ith user model. This must include the users_helper helper files 
-  resources :users, :interests, :activities, :sports, :movies, :user_interests, :user_activities, :user_sports, :user_movies
+  resources :users, :interests, :activities, :sports, :movies, :books, 
+  :user_interests, :user_activities, :user_sports, :user_movies
 
 end
 
