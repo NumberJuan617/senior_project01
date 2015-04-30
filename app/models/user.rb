@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
 	has_many :user_movies
 	has_many :movies, through: :user_movies
 
+	has_many :user_books
+	has_many :books, through: :user_books
+
 
 
 

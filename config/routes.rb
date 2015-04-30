@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'user_books/new'
+
+  get 'user_books/create'
+
+  get 'user_books/destroy'
+
   get 'books/new'
 
   get 'books/create'
@@ -49,7 +55,7 @@ Rails.application.routes.draw do
 
     #user movie
     get 'addNewBook' => 'books#new'
-    #get 'addBook' => 'user_books#new'
+    get 'addBook' => 'user_books#new'
 
 
 
@@ -62,7 +68,7 @@ Rails.application.routes.draw do
 
   #resources utilized ith user model. This must include the users_helper helper files 
   resources :users, :interests, :activities, :sports, :movies, :books, 
-  :user_interests, :user_activities, :user_sports, :user_movies
+  :user_interests, :user_activities, :user_sports, :user_movies, :user_books
 
 end
 

@@ -7,6 +7,9 @@ class UserEditsController < ApplicationController
     @userActivitiesBoard = @user.user_activities
     @userSportsBoard = @user.user_sports
     @userMoviesBoard = @user.user_movies
+    @userBooksBoard = @user.user_books
+
+    
 
 
     @books = Book.all

@@ -31,8 +31,12 @@ class UserSportsController < ApplicationController
 		@userSport= UserSport.new(userSport_params)
 		if @userSport.save
 			redirect_to manageProfileContent_path
+			flash[:success] = "Sport added"
+
 		else
 			render'new'
+			flash[:error] = "Failed to add Book"
+
 		end
 	end
 
