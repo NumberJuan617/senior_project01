@@ -20,7 +20,7 @@ class UserBooksController < ApplicationController
 
 		if !(@isThere)
 		flash[:danger] = "There are no new books to add"
-		redirect_to manageProfileContent_path
+		redirect_to addNewBook_path
 		end
 	end
 
