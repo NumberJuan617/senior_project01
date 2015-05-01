@@ -9,7 +9,7 @@ module UsersHelper
 
 
   def _firstTimer?
-	@firstTimer = true;
+	 @firstTimer = true;
   end
 
 end

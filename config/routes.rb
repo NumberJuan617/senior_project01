@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'tvshows/new'
+
+  get 'tvshows/create'
+
+  get 'tvshows/destroy'
+
   get 'user_books/new'
 
   get 'user_books/create'
