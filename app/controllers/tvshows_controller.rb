@@ -1,10 +1,36 @@
 class TvshowsController < ApplicationController
-  def new
-  end
+	def new
+		@tvshow = Tvshow.new
+	end
 
-  def create
-  end
+	def create
+		@tvshow = Tvshow.new(tvshow_params)
+		if @tvshow.save
+			redirect_to manageProfileContent_path
+			flash[:success] = "Television Show added. Please add it to your profile"
 
-  def destroy
-  end
+		else
+			#error validation
+			render manageProfileContent_path
+			flash[:error] = "Failed to add Television Show"
+		end
+	end
+
+	def destroy
+		if !(params[:id].nil?) #if what we are going to delete is not nil or null
+			@tvshow = Tvshow.find(params[:id])
+			@tvshow.destroy
+			redirect_to manageProfileContent_path
+			flash[:success] = "Television Show deleted"
+		else
+			flash[:error] = "Failed to remove Television Show"
+		end	
+	end
+
+
+	private
+
+	def tvshow_params
+		params.require(:tvshow).permit(:name)
+	end
 end

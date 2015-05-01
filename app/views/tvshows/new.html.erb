@@ -1,2 +1,36 @@
-<h1>Tvshows#new</h1>
-<p>Find me in app/views/tvshows/new.html.erb</p>
+
+<% if logged_in? %>				
+
+	<h1>Add a TV Show</h1>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<%= link_to "Go Back", manageProfileContent_path, class: "btn btn-sm btn-primary" %>
+			<%= link_to "View Profile", current_user, class: "btn btn-sm btn-primary" %>
+		</div>
+
+	</div>
+
+	<div class="row">
+	  <div class="col-md-6 col-md-offset-3">  
+		<%= form_for (@tvshow) do |f| %>
+			<%= render 'shared/error_messages_tvshow'%>
+
+			<%= f.label :name,'Enter the TV show to add' %>
+			<%= f.text_field :name, class: 'form-control' %>
+
+			<%= f.submit "Create TV Show", class:"btn btn-primary" %>
+		<% end %>
+
+			
+
+	
+	  </div>
+	</div>
+
+<% else %>
+	
+	<h1>Must be a user to add tv shows</h1>
+
+<% end %>
+
+<!-- TEMPORARILY REPRESENTS AN EBOARD" -->

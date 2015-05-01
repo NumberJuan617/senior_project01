@@ -3,155 +3,178 @@
 		<h1>Hello <%= @user.fname %> <%= @user.lname %></h1>
 		<h2>Here are your current sports, activities, and interests you have</h2>
 
-		<div class="col-md-2 column"> <!-- Interest-->
-			<h2>Interests</h2>
+		<div class="row">
+			<div class="col-md-2 column"> <!-- Interest-->
+				<h2>Interests</h2>
 
-			<%=link_to 'Add Interest', addInterest_path, class:"btn btn-primary" %>
+				<%=link_to 'Add Interest', addInterest_path, class:"btn btn-primary" %>
 
-			<table class= "table table-hover table-condensed  alert alert-info">
-				<tr>
-					<th class="text-center">Interests Name</th>
-					<th class="text-center alert alert-danger"><b>DEL</b></th>
-				</tr>
-
-				
-				<% @userInterestsBoard.each do |i| %>
+				<table class= "table table-hover table-condensed  alert alert-info">
 					<tr>
-						<td>
-							<%= i.interest.name %>
-						</td>
-						<td class="alert alert-danger">
-							<%=
-								link_to 'X', i, method: :delete
-							%>
-						</td>
+						<th class="text-center">Interests Name</th>
+						<th class="text-center alert alert-danger"><b>DEL</b></th>
 					</tr>
-				<% end %>
+					
+					<% @userInterestsBoard.each do |i| %>
+						<tr>
+							<td>
+								<%= i.interest.name %>
+							</td>
+							<td class="alert alert-danger">
+								<%=
+									link_to 'X', i, method: :delete
+								%>
+							</td>
+						</tr>
+					<% end %>
+				</table>
+			</div>
 
+			<div class="col-md-2 column">
+				<h2>Activities</h2>
 
-				
-			</table>
+				<%=link_to 'Add Activity', addActivity_path, class:"btn btn-primary" %>
 
-			
+				<table class= "table table-hover table-condensed  alert alert-info">
+					<tr>
+						<th class="text-center">Activities Name</th>
+						<th class="text-center alert alert-danger"><b>DEL</b></th>
+
+					</tr>
+					
+					<% @userActivitiesBoard.each do |a| %>
+						<tr>
+							<td>
+								<%= a.activity.name %>
+							</td>
+							<td class="alert alert-danger">
+								<%=
+									link_to 'X', a, method: :delete
+								%>
+							</td>
+						</tr>
+					<% end %>
+
+					
+				</table>
+			</div>
+
+			<div class="col-md-2 column">
+				<h2>Sports</h2>			
+				<%=link_to 'Add Sport', addSport_path, class:"btn btn-primary" %>
+
+				<table class= "table table-hover table-condensed  alert alert-info">
+					<tr>
+						<th class="text-center">Sport Name</th>
+						<th class="text-center alert alert-danger"><b>DEL</b></th>
+
+					</tr>
+
+					<% @userSportsBoard.each do |s| %>
+						<tr>
+							<td>
+								<%= s.sport.name %>
+							</td>
+							<td class="alert alert-danger">
+								<%=
+									link_to 'X', s, method: :delete
+								%>
+							</td>
+						</tr>
+					<% end %>
+
+				</table>
+			</div>
+
+			<div class="col-md-2 column">
+				<h2>Movies</h2>			
+				<%=link_to 'Add Movie', addMovie_path, class:"btn btn-primary" %>
+
+				<table class= "table table-hover table-condensed  alert alert-info">
+					<tr>
+						<th class="text-center">Movie Name</th>
+						<th class="text-center alert alert-danger"><b>DEL</b></th>
+
+					</tr>
+
+					<% @userMoviesBoard.each do |m| %>
+						<tr>
+							<td>
+								<%= m.movie.name %>
+							</td>
+							<td class="alert alert-danger">
+								<%=
+									link_to 'X', m, method: :delete
+								%>
+							</td>
+						</tr>
+					<% end %>
+
+				</table>
+			</div>
+
+			<div class="col-md-2 column">
+				<h2>Books</h2>			
+				<%=link_to 'Add New Book', addBook_path, class:"btn btn-primary" %>
+
+				<table class= "table table-hover table-condensed  alert alert-info">
+					<tr>
+						<th class="text-center">Book Name</th>
+						<th class="text-center alert alert-danger"><b>DEL</b></th>
+
+					</tr>
+
+					<% @userBooksBoard.each do |b| %>
+						<tr>
+							<td>
+								<%= b.book.name %>
+							</td>
+							<td class="alert alert-danger">
+								<%=
+									link_to 'X', b, method: :delete
+								%>
+							</td>
+						</tr>
+					<% end %>
+
+				</table>
+			</div>
+
+			<div class="col-md-2 column">
+				<h2>Television Shows</h2>			
+				<%=link_to 'Add New TV show', addTvshow_path, class:"btn btn-primary" %>
+
+				<table class= "table table-hover table-condensed  alert alert-info">
+					<tr>
+						<th class="text-center">TV Show Name</th>
+						<th class="text-center alert alert-danger"><b>DEL</b></th>
+
+					</tr>
+
+					<% @userTvshowsBoard.each do |tv| %>
+						<tr>
+							<td>
+								<%= tv.tvshow.name %>
+							</td>
+							<td class="alert alert-danger">
+								<%=
+									link_to 'X', tv, method: :delete
+								%>
+							</td>
+						</tr>
+					<% end %>
+
+				</table>
+			</div>
+
 		</div>
 
-		<div class="col-md-2 column">
-			<h2>Activities</h2>
+		<div class="row">
 
-			<%=link_to 'Add Activity', addActivity_path, class:"btn btn-primary" %>
-
-			<table class= "table table-hover table-condensed  alert alert-info">
-				<tr>
-					<th class="text-center">Activities Name</th>
-					<th class="text-center alert alert-danger"><b>DEL</b></th>
-
-				</tr>
-				
-				<% @userActivitiesBoard.each do |a| %>
-					<tr>
-						<td>
-							<%= a.activity.name %>
-						</td>
-						<td class="alert alert-danger">
-							<%=
-								link_to 'X', a, method: :delete
-							%>
-						</td>
-					</tr>
-				<% end %>
-
-				
-			</table>
-		</div>
-
-		<div class="col-md-2 column">
-			<h2>Sports</h2>			
-			<%=link_to 'Add Sport', addSport_path, class:"btn btn-primary" %>
-
-			<table class= "table table-hover table-condensed  alert alert-info">
-				<tr>
-					<th class="text-center">Sport Name</th>
-					<th class="text-center alert alert-danger"><b>DEL</b></th>
-
-				</tr>
-
-				<% @userSportsBoard.each do |s| %>
-					<tr>
-						<td>
-							<%= s.sport.name %>
-						</td>
-						<td class="alert alert-danger">
-							<%=
-								link_to 'X', s, method: :delete
-							%>
-						</td>
-					</tr>
-				<% end %>
-
-			</table>
-		</div>
-
-		<div class="col-md-2 column">
-			<h2>Movies</h2>			
-			<%=link_to 'Add Movie', addMovie_path, class:"btn btn-primary" %>
-
-			<table class= "table table-hover table-condensed  alert alert-info">
-				<tr>
-					<th class="text-center">Movie Name</th>
-					<th class="text-center alert alert-danger"><b>DEL</b></th>
-
-				</tr>
-
-				<% @userMoviesBoard.each do |m| %>
-					<tr>
-						<td>
-							<%= m.movie.name %>
-						</td>
-						<td class="alert alert-danger">
-							<%=
-								link_to 'X', m, method: :delete
-							%>
-						</td>
-					</tr>
-				<% end %>
-
-			</table>
-		</div>
-
-		<div class="col-md-2 column">
-			<h2>Books</h2>			
-			<%=link_to 'Add New Book', addBook_path, class:"btn btn-primary" %>
-
-			<table class= "table table-hover table-condensed  alert alert-info">
-				<tr>
-					<th class="text-center">Book Name</th>
-					<th class="text-center alert alert-danger"><b>DEL</b></th>
-
-				</tr>
-
-				<% @userBooksBoard.each do |b| %>
-					<tr>
-						<td>
-							<%= b.book.name %>
-						</td>
-						<td class="alert alert-danger">
-							<%=
-								link_to 'X', b, method: :delete
-							%>
-						</td>
-					</tr>
-				<% end %>
-
-			</table>
-		</div>
-
-		<div class="col-md-3 column">
-			<h2>Recipes</h2>
-			<p>Recipes Drop Down Menu Here</p>
-
-
-
-
+			<div class="col-md-2 column">
+				<h2>Recipes</h2>
+				<p>Recipes Drop Down Menu Here</p>
+			</div>
 		</div>
 
 

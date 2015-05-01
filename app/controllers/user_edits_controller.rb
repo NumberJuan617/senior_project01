@@ -9,11 +9,9 @@ class UserEditsController < ApplicationController
     @userSportsBoard = @user.user_sports
     @userMoviesBoard = @user.user_movies
     @userBooksBoard = @user.user_books
+    @userTvshowsBoard = @user.user_tvshows
 
-    
-
-
-    @books = Book.all
+    @tvshows = Tvshow.all
 
     #user information to add within the page
 

@@ -6,23 +6,23 @@ class UserMoviesController < ApplicationController
   	@userMovieOptions = Array.new
 
 
-	@isThere = false;
+  	@isThere = false;
 
-	@movieOptions.each do |mo|#for every movie in the db
-		if !(@user.user_movies.where("movie_id ="+mo[1].to_s).exists?)#check if the user does not have the movie
-			#if true
-			@movie = Movie.find(mo[1])#gather the movie the user does not have
-			@temp = Array.new#make a new array
-			@temp.push(@movie.name, @movie.id)#use the new array to hold the movie object for us
-			@userMovieOptions.push(@temp)#add the movie to a list of movies that the user does not have
-			@isThere = true#means there are movies to add
-		end
-	end
+    @movieOptions.each do |mo|#for every movie in the db
+    	if !(@user.user_movies.where("movie_id ="+mo[1].to_s).exists?)#check if the user does not have the movie
+    		#if true
+    		@movie = Movie.find(mo[1])#gather the movie the user does not have
+    		@temp = Array.new#make a new array
+    		@temp.push(@movie.name, @movie.id)#use the new array to hold the movie object for us
+    		@userMovieOptions.push(@temp)#add the movie to a list of movies that the user does not have
+    		@isThere = true#means there are movies to add
+        end
+    end
 
-	if !(@isThere)
-	flash[:danger] = "There are no new movies to add"
-	redirect_to addNewMovie_path
-	end
+  	if !(@isThere)
+    	flash[:danger] = "There are no new movies to add"
+    	redirect_to addNewMovie_path
+  	end
   end
 
   def create

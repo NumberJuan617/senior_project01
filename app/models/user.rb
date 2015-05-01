@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 	has_many :user_books
 	has_many :books, through: :user_books
 
+	has_many :user_tvshows
+	has_many :tvshows, through: :user_tvshows
 
 
 
