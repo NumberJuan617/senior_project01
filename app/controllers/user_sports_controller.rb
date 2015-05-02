@@ -1,4 +1,7 @@
 class UserSportsController < ApplicationController
+	before_action :logged_in_user, only: [:new, :create, :destroy]
+    before_action :correct_user,   only: :destroy
+    
 	def new
 		if logged_in?
 			@user = current_user
@@ -38,8 +41,8 @@ class UserSportsController < ApplicationController
 			flash[:success] = "Sport added"
 
 		else
-			render'new'
-			flash[:error] = "Failed to add Book"
+			redirect_to manageProfileContent_path
+			flash[:danger] = "Failed to add Sport"
 
 		end
 	end
@@ -52,7 +55,7 @@ class UserSportsController < ApplicationController
 		    flash[:success] = "Sport deleted"
 		else
 			redirect_to manageProfileContent_path
-		    flash[:error] = "Failed to remove Sport"
+		    flash[:danger] = "Failed to remove Sport"
 
 		end
 		
@@ -64,4 +67,5 @@ class UserSportsController < ApplicationController
 	def userSport_params
 		params.require(:user_sport).permit(:user_id, :sport_id)
 	end
+
 end

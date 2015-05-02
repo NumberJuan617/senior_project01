@@ -1,4 +1,6 @@
 class UserMoviesController < ApplicationController
+  before_action :logged_in_user, only: [:new, :create, :destroy]
+  
   def new
     if logged_in? 
     	@user = current_user
@@ -33,8 +35,11 @@ class UserMoviesController < ApplicationController
   	@userMovie = UserMovie.new(userMovie_params)
     if @userMovie.save
       redirect_to manageProfileContent_path
+      flash[:success] = "Movie added"
+
     else
-      render'new'
+      redirect_to manageProfileContent_path
+      flash[:danger] = "Failed to add Movie"
     end
 
   	
@@ -45,11 +50,11 @@ class UserMoviesController < ApplicationController
     if !(params[:id].nil?) #if what we are going to delete is not nil or null
       @userMovie = UserMovie.find(params[:id])
       @userMovie.destroy
-      redirect_to addMovie_path
+      redirect_to manageProfileContent_path
       flash[:success] = "Movie deleted"
     else
       redirect_to manageProfileContent_path
-      flash[:error] = "Failed to remove Movie"
+      flash[:danger] = "Failed to remove Movie"
     end
   end
 
@@ -60,4 +65,5 @@ class UserMoviesController < ApplicationController
     def userMovie_params
       params.require(:user_movie).permit(:user_id, :movie_id)
     end
+
 end

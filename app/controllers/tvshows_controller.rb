@@ -15,8 +15,8 @@ class TvshowsController < ApplicationController
 
 		else
 			#error validation
-			render manageProfileContent_path
-			flash[:error] = "Failed to add Television Show"
+			redirect_to addNewTvshow_path
+			flash[:danger] = "Failed to add a new Television Show because it already exists or the entry was empty! "
 		end
 	end
 
@@ -27,7 +27,7 @@ class TvshowsController < ApplicationController
 			redirect_to manageProfileContent_path
 			flash[:success] = "Television Show deleted"
 		else
-			flash[:error] = "Failed to remove Television Show"
+			flash[:danger] = "Failed to remove Television Show"
 		end	
 	end
 

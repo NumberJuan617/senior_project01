@@ -10,8 +10,9 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-	    @microposts = @user.microposts.paginate(page: params[:page] , :per_page => 10)
+	    @userMicroposts = @user.microposts.paginate(page: params[:page] , :per_page => 10)
 		#user profile content below
+      	@micropost = current_user.microposts.build if logged_in?
 
 		@userActivities = @user.user_activities.all
 		@userInterests = @user.user_interests.all
@@ -64,7 +65,7 @@ class UsersController < ApplicationController
 	
 
     def user_params
-      params.require(:user).permit(:fname, :lname, :age, :email, :bio, :street, :gender, :state, :zip, :password,
+      params.require(:user).permit(:fname, :lname, :age, :email, :bio, :street, :gender, :state, :phone,  :city, :zip, :password,
                                    :password_confirmation)
     end
     

@@ -1,4 +1,7 @@
 class UserBooksController < ApplicationController
+	before_action :logged_in_user, only: [:new, :create, :destroy]
+    before_action :correct_user,   only: :destroy
+    
 	def new
 		if logged_in?
 			@user = current_user
@@ -34,8 +37,8 @@ class UserBooksController < ApplicationController
 			redirect_to manageProfileContent_path
 			flash[:success] = "Book added"
 		else
-			render manageProfileContent_path
-			flash[:error] = "Failed to add Book"
+			redirect_to manageProfileContent_path
+			flash[:danger] = "Failed to add Book"
 		end
 	end
 
@@ -47,7 +50,7 @@ class UserBooksController < ApplicationController
 		flash[:success] = "Book deleted"
 		else
 		redirect_to manageProfileContent_path
-		flash[:error] = "Failed to remove Book"
+		flash[:danger] = "Failed to remove Book"
 		end
 	end
 
@@ -55,5 +58,10 @@ class UserBooksController < ApplicationController
 
 	def userBook_params
 		params.require(:user_book).permit(:user_id, :book_id)
+	end
+
+	def correct_user
+		@userBook = current_user.books.find_by(id: params[:id])
+		redirect_to manageProfileContent_path if @userBook.nil?
 	end
 end

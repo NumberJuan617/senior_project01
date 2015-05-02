@@ -15,8 +15,8 @@ class SportsController < ApplicationController
       flash[:success] = "Sport added"
 
     else
-      render manageProfileContent_path
-      flash[:error] = "Failed to add Sport"
+      redirect_to addNewSport_path
+      flash[:danger] = "Failed to add new Sport because it already exists!"
 
     end
   	
@@ -31,7 +31,7 @@ class SportsController < ApplicationController
     flash[:success] = "Sport deleted"
     
   else
-    flash[:error] = "Failed to remove sport"
+    flash[:danger] = "Failed to remove sport"
 
   end
     

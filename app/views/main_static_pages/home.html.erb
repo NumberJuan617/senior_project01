@@ -5,7 +5,34 @@
 
 	<% if logged_in? %>
 		<div class="row clearfix" >
-			<!-- This grid below is for friends-->
+		
+			<!-- This is grid is for the home page containing all of the users friends and information -->
+			<div class="col-md-8 column" >
+
+			<div class="row">
+
+				<aside class="col-md-12" style="background-color:lavender;">
+				  <section class="user_info">
+				    <%= render 'shared/user_info' %>
+				  </section>
+				  <section class="micropost_form">
+				    <%= render 'shared/micropost_form' %>
+				  </section>
+				</aside>
+			
+			</div>
+	
+				<h3 class="text-center text-primary " >
+					Follwer Updates
+				</h3>	
+				<div>	
+					 <h3>Micropost Feed -- Current User Only for now --</h3>
+	 					 <%= render 'shared/feed' %>
+				</div>
+
+			</div>
+
+				<!-- This grid below is for friends-->
 			<div class="col-md-2 column" style="background-color:lavender;">
 				<h3 class="text-center">
 					Followers
@@ -22,35 +49,6 @@
 				</div>
 			</div>
 
-			<!-- This is grid is for the home page containing all of the users friends and information -->
-			<div class="col-md-8 column" style="background-color:lavender;">
-
-			<div class="row">
-
-				<aside class="col-md-8 col-md-offset-2">
-				  <section class="user_info">
-				    <%= render 'shared/user_info' %>
-				  </section>
-				  <section class="micropost_form">
-				    <%= render 'shared/micropost_form' %>
-				  </section>
-				</aside>
-
-
-
-			<%= @lastMicropost%> <!-- Show the users last micropost -->
-
-			</div>
-	
-				<h3 class="text-center text-primary " >
-					Follwer Updates
-				</h3>	
-				<div>	
-					 <h3>Micropost Feed -- Current User Only for now --</h3>
-	 					 <%= render 'shared/feed' %>
-				</div>
-
-			</div>
 
 			<div class="col-md-2 column" style="background-color:lavender;">
 				<h3 class="text-center">

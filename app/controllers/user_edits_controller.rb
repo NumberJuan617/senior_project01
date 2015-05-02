@@ -1,4 +1,6 @@
 class UserEditsController < ApplicationController
+  
+  
   def home
     if logged_in?
     	#method where the user will be able to see the content on their profile and get directed to the right location
@@ -20,24 +22,4 @@ class UserEditsController < ApplicationController
     end
   end
 
-  def add
-  	#method where the user will be able to add interests, sports, activities, and sofourth 
-
-
-  end
-
-  def new
-
-  end
-
-  def create
-
-  end
-
-  def edit
-    
-  end
-
-  def update
-  end
 end

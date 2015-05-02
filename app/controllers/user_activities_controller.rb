@@ -1,4 +1,7 @@
 class UserActivitiesController < ApplicationController
+	before_action :logged_in_user, only: [:new, :create, :destroy]
+    before_action :correct_user,   only: :destroy
+
 	def new
 		if logged_in?
 		  	@user = current_user
@@ -33,7 +36,8 @@ class UserActivitiesController < ApplicationController
 	  	if @userActivity.save
 	  		redirect_to manageProfileContent_path
 	  	else
-	  		render'new'
+	  		redirect_to manageProfileContent_path
+			flash[:danger] = "Failed to add Activity"
 	  	end
   	end
 
@@ -45,7 +49,7 @@ class UserActivitiesController < ApplicationController
 			flash[:success] = "Activity deleted"
 		else
 			redirect_to manageProfileContent_path
-			flash[:error] = "Failed to remove Interest"
+			flash[:danger] = "Failed to remove Interest"
 
 		end
   	end
@@ -58,4 +62,9 @@ class UserActivitiesController < ApplicationController
       params.require(:user_activity).permit(:user_id, :activity_id)
     end
 
+
+    def correct_user
+		@userActivity = current_user.activities.find_by(id: params[:id])
+		redirect_to manageProfileContent_path if @userActivity.nil?
+	end
 end
