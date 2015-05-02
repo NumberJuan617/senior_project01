@@ -1,6 +1,11 @@
 class SportsController < ApplicationController
   def new
-  	@sport = Sport.new
+    if logged_in?
+      @sport = Sport.new
+    else
+      redirect_to root_url
+    end
+
   end
 
   def create

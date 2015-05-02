@@ -1,28 +1,31 @@
 class UserActivitiesController < ApplicationController
 	def new
-	  	@user = current_user
-	  	@userActivity = UserActivity.new
-	  	@activityOptions = Activity.all.map{|u| [ u.name, u.id] }
+		if logged_in?
+		  	@user = current_user
+		  	@userActivity = UserActivity.new
+		  	@activityOptions = Activity.all.map{|u| [ u.name, u.id] }
 
-		@userActivityOptions = Array.new
+			@userActivityOptions = Array.new
 
 
-		@isThere = false;
-		@activityOptions.each do |ao|
-		  if !(@user.user_activities.where("activity_id ="+ao[1].to_s).exists?)
-		      @activity = Activity.find(ao[1])
-		      @temp = Array.new
-		      @temp.push(@activity.name, @activity.id)
-		      @userActivityOptions.push(@temp)
-		      @isThere = true
-		  end
+			@isThere = false;
+			@activityOptions.each do |ao|
+			  if !(@user.user_activities.where("activity_id ="+ao[1].to_s).exists?)
+			      @activity = Activity.find(ao[1])
+			      @temp = Array.new
+			      @temp.push(@activity.name, @activity.id)
+			      @userActivityOptions.push(@temp)
+			      @isThere = true
+			  end
+			end
+
+			if !(@isThere)
+			  flash[:danger] = "There are no new activities to add"
+			  redirect_to manageProfileContent_path
+			end
+		else
+			redirect_to root_url 
 		end
-
-		if !(@isThere)
-		  flash[:danger] = "There are no new activities to add"
-		  redirect_to manageProfileContent_path
-		end
-
 	 end
 
  	def create

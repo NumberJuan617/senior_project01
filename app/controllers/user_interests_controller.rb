@@ -1,27 +1,31 @@
 class UserInterestsController < ApplicationController
     
     def new
-      @user = current_user
-      @userInterest = UserInterest.new
-      @interestOptions = Interest.all.map{|u| [ u.name, u.id] }
+      if logged_in?
+        @user = current_user
+        @userInterest = UserInterest.new
+        @interestOptions = Interest.all.map{|u| [ u.name, u.id] }
 
-      @userInterestOptions = Array.new
+        @userInterestOptions = Array.new
 
 
-      @isThere = false;
-      @interestOptions.each do |io|
-      if !(@user.user_interests.where("interest_id ="+io[1].to_s).exists?)
-        @intrst = Interest.find(io[1])
-        @temp = Array.new
-        @temp.push(@intrst.name, @intrst.id)
-        @userInterestOptions.push(@temp)
-        @isThere = true
+        @isThere = false;
+        @interestOptions.each do |io|
+        if !(@user.user_interests.where("interest_id ="+io[1].to_s).exists?)
+          @intrst = Interest.find(io[1])
+          @temp = Array.new
+          @temp.push(@intrst.name, @intrst.id)
+          @userInterestOptions.push(@temp)
+          @isThere = true
+          end
         end
-      end
 
-      if !(@isThere)
-        flash[:danger] = "There are no new interests to add"
-        redirect_to manageProfileContent_path
+        if !(@isThere)
+          flash[:danger] = "There are no new interests to add"
+          redirect_to manageProfileContent_path
+        end
+      else
+        redirect_to root_url
       end
     end
 

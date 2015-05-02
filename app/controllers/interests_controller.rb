@@ -1,6 +1,10 @@
 class InterestsController < ApplicationController
   def new
-  	@interest = Interest.new
+    if logged_in?
+      @interest = Interest.new
+    else
+      redirect_to root_url
+    end
   end
 
   def create

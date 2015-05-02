@@ -1,26 +1,30 @@
 class UserBooksController < ApplicationController
 	def new
-		@user = current_user
-		@userBook = UserBook.new
-		@bookOptions = Book.all.map{|u| [ u.name, u.id] }
+		if logged_in?
+			@user = current_user
+			@userBook = UserBook.new
+			@bookOptions = Book.all.map{|u| [ u.name, u.id] }
 
-		@userBookOptions = Array.new
+			@userBookOptions = Array.new
 
 
-		@isThere = false;
-		@bookOptions.each do |bo|
-		if !(@user.user_books.where("book_id ="+bo[1].to_s).exists?)
-			@book = Book.find(bo[1])
-			@temp = Array.new
-			@temp.push(@book.name, @book.id)
-			@userBookOptions.push(@temp)
-			@isThere = true
+			@isThere = false;
+			@bookOptions.each do |bo|
+			if !(@user.user_books.where("book_id ="+bo[1].to_s).exists?)
+				@book = Book.find(bo[1])
+				@temp = Array.new
+				@temp.push(@book.name, @book.id)
+				@userBookOptions.push(@temp)
+				@isThere = true
+				end
 			end
-		end
 
-		if !(@isThere)
-		flash[:danger] = "There are no new books to add"
-		redirect_to addNewBook_path
+			if !(@isThere)
+			flash[:danger] = "There are no new books to add"
+			redirect_to addNewBook_path
+			end
+		else
+			redirect_to root_url
 		end
 	end
 

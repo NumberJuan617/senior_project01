@@ -1,6 +1,10 @@
 class BooksController < ApplicationController
 	def new
-		@book = Book.new
+		if logged_in?
+			@book = Book.new
+		else
+			redirect_to root_url
+		end
 	end
 
 	def create

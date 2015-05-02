@@ -1,6 +1,10 @@
 class ActivitiesController < ApplicationController
   def new
-  	@activity = Activity.new
+    if logged_in?
+    	@activity = Activity.new
+    else
+      redirect_to root_url
+    end
   end
 
   def create

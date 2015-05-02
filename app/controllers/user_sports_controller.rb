@@ -1,27 +1,31 @@
 class UserSportsController < ApplicationController
 	def new
-		@user = current_user
-		@userSport = UserSport.new
-		@sportOptions = Sport.all.map{|u| [ u.name, u.id] }
+		if logged_in?
+			@user = current_user
+			@userSport = UserSport.new
+			@sportOptions = Sport.all.map{|u| [ u.name, u.id] }
 
-		@userSportOptions = Array.new
+			@userSportOptions = Array.new
 
 
-		@isThere = false;
-		@sportOptions.each do |so|
-			if !(@user.user_sports.where("sport_id ="+so[1].to_s).exists?)
-				@sport = Sport.find(so[1])
-				@temp = Array.new
-				@temp.push(@sport.name, @sport.id)
-				@userSportOptions.push(@temp)
-				@isThere = true
+			@isThere = false;
+			@sportOptions.each do |so|
+				if !(@user.user_sports.where("sport_id ="+so[1].to_s).exists?)
+					@sport = Sport.find(so[1])
+					@temp = Array.new
+					@temp.push(@sport.name, @sport.id)
+					@userSportOptions.push(@temp)
+					@isThere = true
+				end
 			end
-		end
-		
+			
 
-		if !(@isThere)
-			flash[:danger] = "There are no new sports to add"
-			redirect_to manageProfileContent_path
+			if !(@isThere)
+				flash[:danger] = "There are no new sports to add"
+				redirect_to manageProfileContent_path
+			end
+		else
+			redirect_to root_url
 		end
 	end
 

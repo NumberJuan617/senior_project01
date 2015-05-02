@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 		@userSports = @user.user_sports.all
 		@userMovies = @user.user_movies.all
 		@userBooks = @user.user_books.all
+		@userTvshows = @user.user_tvshows.all
 
 		#debugger
 	end

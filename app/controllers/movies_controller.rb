@@ -1,6 +1,10 @@
 class MoviesController < ApplicationController
   def new
-  	@movie = Movie.new
+    if logged_in? 
+      @movie = Movie.new
+    else
+      redirect_to root_url
+    end
   end
 
   def create

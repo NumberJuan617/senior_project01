@@ -1,6 +1,10 @@
 class TvshowsController < ApplicationController
 	def new
-		@tvshow = Tvshow.new
+		if logged_in?
+			@tvshow = Tvshow.new
+		else
+			redirect_to root_url
+		end
 	end
 
 	def create
