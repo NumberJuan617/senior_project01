@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-	before_action :logged_in_user, only: [:index, :edit, :update]#only permit the user to edit and update their profile if they are logged in
+	before_action :logged_in_user, only: [:index, :edit, :update, :destroy]#only permit the user to edit and update their profile if they are logged in
   	before_action :correct_user,   only: [:edit, :update]#ensures the correct user before editing anyone
-
+  	before_action :admin_user,     only: :destroy
   	include UsersHelper
   	
   	def index
-  		@users = User.all#gathers all of the users in the db model
+  		@users = User.paginate(page: params[:page], :per_page => 10)
   	end
 
 	def show
@@ -52,6 +52,11 @@ class UsersController < ApplicationController
 		
 	end
 
+	def destroy
+		User.find(params[:id]).destroy
+		flash[:success] = "User deleted"
+		redirect_to users_url
+	end
 
 	private
 
