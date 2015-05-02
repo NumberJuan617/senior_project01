@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+	    @microposts = @user.microposts.paginate(page: params[:page] , :per_page => 10)
 		#user profile content below
 
 		@userActivities = @user.user_activities.all
@@ -82,6 +83,8 @@ class UsersController < ApplicationController
       @user = current_user
       redirect_to(root_url) unless current_user?(@user)
     end
+
+ 
 
 
 

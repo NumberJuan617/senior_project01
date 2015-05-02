@@ -8,7 +8,7 @@
 			<!-- This grid below is for friends-->
 			<div class="col-md-2 column" style="background-color:lavender;">
 				<h3 class="text-center">
-					Friends
+					Followers
 				</h3>
 				<div class="row clearfix">
 					<div class="col-md-12 column" style="background-color:green;">
@@ -23,54 +23,40 @@
 			</div>
 
 			<!-- This is grid is for the home page containing all of the users friends and information -->
-			<div class="col-md-7 column" style="background-color:lavender;">
-				<h3 class="text-center text-primary" >
-					Updates
+			<div class="col-md-8 column" style="background-color:lavender;">
+
+			<div class="row">
+
+				<aside class="col-md-8 col-md-offset-2">
+				  <section class="user_info">
+				    <%= render 'shared/user_info' %>
+				  </section>
+				  <section class="micropost_form">
+				    <%= render 'shared/micropost_form' %>
+				  </section>
+				</aside>
+
+
+
+			<%= @lastMicropost%> <!-- Show the users last micropost -->
+
+			</div>
+	
+				<h3 class="text-center text-primary " >
+					Follwer Updates
 				</h3>	
-
-				<div class="center jumbotron">
-					Content 
-				</div>
-
-				<div class="center jumbotron">
-					Content 
-				</div>
-
-				<div class="center jumbotron">
-					Content 
-				</div>
-
-				<div class="center jumbotron">
-					Content 
+				<div>	
+					 <h3>Micropost Feed -- Current User Only for now --</h3>
+	 					 <%= render 'shared/feed' %>
 				</div>
 
 			</div>
 
-			<div class="col-md-3 column" style="background-color:lavender;">
+			<div class="col-md-2 column" style="background-color:lavender;">
 				<h3 class="text-center">
-					Sports and Events
+					Following
 				</h3>
 
-				<div class="row clearfix">
-					<div class="col-md-6 column" style="background-color:blue;">
-						<p class="text-center">
-							Sports
-						</p>
-
-						<!-- DB list of users sports -->
-
-					</div>
-
-					<div class="col-md-6 column" style="background-color:blue;">
-						<p class="text-center">
-							Events
-						</p>
-
-						<!-- DB list of user events-->
-
-					</div>
-
-				</div>
 			</div>
 		</div>
 	

@@ -2,11 +2,6 @@
 <% if logged_in? %>
 	
 	<div class="row clearfix">
-
-		<% if _firstTimer? %><!-- only show on the users profile -->
-			<p> First Time User?  Edit your profile!</p>
-		<% end %>
-
 		<div class="col-md-3 column">
 			<!-- This will contain the users profile information and content-->
 			<div class="row ">
@@ -81,6 +76,21 @@
 
 
 				</div>
+
+				<%if current_user?(@user)%>
+					This is my current profile					
+				<%else%>
+					This is not my profile
+				<%end%>
+
+				 <% if @user.microposts.any? %>
+			      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+				      <ol class="microposts">
+				        <%= render @microposts %>
+			      </ol>
+			      <%= will_paginate @microposts %>
+			    <% end %>
+
 			</div>
 
 		</div>
