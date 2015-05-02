@@ -2,9 +2,6 @@ Rails.application.routes.draw do
 
 
 
-  get 'sessions/new'
-
-  get 'users/new'
   root 'main_static_pages#home'
   
   #main static pages controller routes
@@ -63,6 +60,7 @@ Rails.application.routes.draw do
   :user_interests, :user_activities, :user_sports, :user_movies, :user_books, :user_tvshows
 
   resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
 end
 
 
