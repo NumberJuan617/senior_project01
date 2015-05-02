@@ -62,6 +62,7 @@ Rails.application.routes.draw do
   resources :users, :interests, :activities, :sports, :movies, :books, :tvshows,
   :user_interests, :user_activities, :user_sports, :user_movies, :user_books, :user_tvshows
 
+  resources :account_activations, only: [:edit]
 end
 
 
