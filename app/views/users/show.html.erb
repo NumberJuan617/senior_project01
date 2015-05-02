@@ -28,6 +28,15 @@
 			</div>
 			
 			<div class="row">
+				<section class="stats">
+				<%= render 'shared/stats' %>
+				</section>
+
+				
+			</div>
+
+			
+			<div class="row">
 				<div class="col-md-12 " >
 					<h2>Mini Biography</h2>	
 					<%= @user.bio%>		
@@ -37,11 +46,7 @@
 					
 			</div>
 
-			<div class="row">
-				
-				<h2>Follow/Followers statistics</h2>				
-			</div>
-
+			
 			<h2>Profile Information</h2>
 
 			<div class="row lert alert-info text-center ">
@@ -85,7 +90,8 @@
 			<!-- This will contain the users posts, link to microposts, and ability to friend or follow-->
 			<div class="row">
 				<div class="col-md-6">
-					<%= link_to "Follow", manageProfileContent_path, class: "btn btn-primary btn-lg btn-block" %>
+								    <%= render 'follow_form' if logged_in? %>
+
 				</div>
 				<div class="col-md-6">
 					<%= link_to "Recipes", manageProfileContent_path, class: "btn btn-primary btn-lg btn-block" %>
