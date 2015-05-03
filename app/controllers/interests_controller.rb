@@ -16,8 +16,8 @@ class InterestsController < ApplicationController
     else
     	#error validation
 
-		render manageProfileContent_path
-		flash[:error] = "Failed to add Interest"
+		redirect_to addNewInterest_path
+		flash[:danger] = "Failed to add Interest because it already exists"
 
     end
   	
@@ -32,7 +32,7 @@ class InterestsController < ApplicationController
 	    flash[:success] = "Interest deleted"
 	else
 		redirect_to manageProfileContent_path
-	    flash[:error] = "Failed to remove Interest"
+	    flash[:danger] = "Failed to remove Interest"
 
   	end
   	

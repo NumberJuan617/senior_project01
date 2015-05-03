@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502135027) do
+ActiveRecord::Schema.define(version: 20150502225728) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -31,11 +31,33 @@ ActiveRecord::Schema.define(version: 20150502135027) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "microposts", force: true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "picture"
+  end
+
+  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+  add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
+
   create_table "movies", force: true do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "relationships", force: true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
   create_table "sports", force: true do |t|
     t.string   "name"
@@ -111,6 +133,9 @@ ActiveRecord::Schema.define(version: 20150502135027) do
     t.boolean  "admin",             default: false
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "city"
+    t.string   "phone"
+    t.string   "country"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

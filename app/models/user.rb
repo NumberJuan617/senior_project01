@@ -6,24 +6,39 @@ class User < ActiveRecord::Base
 	before_save   :downcase_email
 	before_create :create_activation_digest
 
-	
-	has_many :user_interests
+
+	has_many :active_relationships, class_name:  "Relationship",
+		                          foreign_key: "follower_id",
+		                          dependent:   :destroy
+
+ 	has_many :passive_relationships, class_name:  "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent:   :destroy
+
+
+ 	has_many :following, through: :active_relationships, source: :followed
+  	has_many :followers, through: :passive_relationships, source: :follower
+
+  	
+	has_many :user_interests, dependent: :destroy	
 	has_many :interests, through: :user_interests	
 
-	has_many :user_activities
+	has_many :user_activities, dependent: :destroy	
 	has_many :activities, through: :user_activities
 
-	has_many :user_sports
+	has_many :user_sports, dependent: :destroy	
 	has_many :sports, through: :user_sports
 
-	has_many :user_movies
+	has_many :user_movies, dependent: :destroy	
 	has_many :movies, through: :user_movies
 
-	has_many :user_books
+	has_many :user_books, dependent: :destroy	
 	has_many :books, through: :user_books
 
-	has_many :user_tvshows
+	has_many :user_tvshows, dependent: :destroy	
 	has_many :tvshows, through: :user_tvshows
+
+ 	has_many :microposts, dependent: :destroy	
 
 
 
@@ -95,6 +110,28 @@ class User < ActiveRecord::Base
 		reset_sent_at < 2.hours.ago
 	end
 
+ 	# Returns a user's status feed.
+	def feed
+	    following_ids = "SELECT followed_id FROM relationships
+	                     WHERE  follower_id = :user_id"
+	    Micropost.where("user_id IN (#{following_ids})
+	                     OR user_id = :user_id", user_id: id)
+  	end
+
+	# Follows a user.
+	def follow(other_user)
+		active_relationships.create(followed_id: other_user.id)
+	end
+
+	# Unfollows a user.
+	def unfollow(other_user)
+		active_relationships.find_by(followed_id: other_user.id).destroy
+	end
+
+	# Returns true if the current user is following the other user.
+	def following?(other_user)
+		following.include?(other_user)
+	end
 
 
   private

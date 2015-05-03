@@ -1,8 +1,12 @@
 class MainStaticPagesController < ApplicationController
   def home
     #home will show the parallax bootstrap effect 
-    @users = User.all
-        
+    if logged_in?
+      @users = User.all
+      @micropost = current_user.microposts.build if logged_in?
+      @feed_items = current_user.feed.paginate(page: params[:page], :per_page => 10)
+
+    end
   end
 
   def recipe

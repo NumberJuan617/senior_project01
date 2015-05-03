@@ -53,7 +53,13 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'#post command 'sends all form submition data' to the user
   delete 'logout'  => 'sessions#destroy'
 
-  
+  #user following association
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
 
   #resources utilized ith user model. This must include the users_helper helper files 
   resources :users, :interests, :activities, :sports, :movies, :books, :tvshows,
@@ -61,6 +67,10 @@ Rails.application.routes.draw do
 
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
+
+  resources :microposts,          only: [:create, :destroy]
+  resources :relationships,       only: [:create, :destroy]
+
 end
 
 

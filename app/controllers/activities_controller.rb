@@ -15,8 +15,8 @@ class ActivitiesController < ApplicationController
 
       #tell the user we updated their profile
     else
-      render manageProfileContent_path
-      flash[:error] = "Failed to add Activity"
+      redirect_to addNewActivity_path
+      flash[:error] = "Failed to add Activity because it already exists or the entry was empty!"
 
     end
   	

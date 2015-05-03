@@ -15,8 +15,8 @@ class BooksController < ApplicationController
 
 		else
 			#error validation
-			render manageProfileContent_path
-			flash[:error] = "Failed to add Book"
+			redirect_to addNewBook_path
+			flash[:danger] = "Failed to add new Book because it already exists or the entry was empty!"
 		end
 	end
 
@@ -28,7 +28,7 @@ class BooksController < ApplicationController
 			redirect_to manageProfileContent_path
 			flash[:success] = "Book deleted"
 		else
-			flash[:error] = "Failed to remove book"
+			flash[:danger] = "Failed to remove book"
 		end	
 	end
 

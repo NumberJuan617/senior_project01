@@ -1,4 +1,6 @@
 class UserTvshowsController < ApplicationController
+  before_action :logged_in_user, only: [:new, :create, :destroy]
+  
   def new
     if logged_in?
     	@user = current_user
@@ -34,8 +36,10 @@ class UserTvshowsController < ApplicationController
   	@userTvshow = UserTvshow.new(userTvshow_params)
     if @userTvshow.save
       redirect_to manageProfileContent_path
+      flash[:success] = "TV Show added"
     else
-      render'new'
+      redirect_to manageProfileContent_path
+      flash[:danger] = "Failed to add Tv Show"
     end
   end
 
@@ -43,11 +47,11 @@ class UserTvshowsController < ApplicationController
   	 if !(params[:id].nil?) #if what we are going to delete is not nil or null
       @userTvshow = UserTvshow.find(params[:id])
       @userTvshow.destroy
-      redirect_to addTvshow_path
+      redirect_to manageProfileContent_path
       flash[:success] = "TV Show deleted"
     else
       redirect_to manageProfileContent_path
-      flash[:error] = "Failed to remove TV show"
+      flash[:danger] = "Failed to remove TV show"
     end
   end
 

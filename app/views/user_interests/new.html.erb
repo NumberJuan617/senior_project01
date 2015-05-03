@@ -1,6 +1,7 @@
 <div class="row clearfix">
 	<div class="col-md-6 col-md-offset-3">
 		<%= form_for (@userInterest) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
 
 			<%= f.label :Interest,'Select the Interest' %>
 			<%= f.select(:interest_id, @userInterestOptions) %>

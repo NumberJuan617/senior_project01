@@ -1,4 +1,6 @@
 class UserInterestsController < ApplicationController
+    before_action :logged_in_user, only: [:new, :create, :destroy]
+    before_action :correct_user,   only: :destroy
     
     def new
       if logged_in?
@@ -33,8 +35,11 @@ class UserInterestsController < ApplicationController
     @userInterest = UserInterest.new(userInterest_params)
     if @userInterest.save
       redirect_to manageProfileContent_path
+      flash[:success] = "Interest added"
+
     else
-      render'new'
+      redirect_to manageProfileContent_path
+      flash[:danger] = "Failed to add Book"
     end
 
   end
@@ -48,7 +53,7 @@ class UserInterestsController < ApplicationController
       flash[:success] = "Interest deleted"
     else
       redirect_to manageProfileContent_path
-      flash[:error] = "Failed to remove Interest"
+      flash[:danger] = "Failed to remove Interest"
     end
   end
 
@@ -59,4 +64,9 @@ class UserInterestsController < ApplicationController
     def userInterest_params
       params.require(:user_interest).permit(:user_id, :interest_id)
     end
+
+    def correct_user
+    @userInterest = current_user.interests.find_by(id: params[:id])
+    redirect_to manageProfileContent_path if @userInterest.nil?
+  end
 end
