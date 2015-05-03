@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502225728) do
+ActiveRecord::Schema.define(version: 20150503182226) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -24,6 +24,24 @@ ActiveRecord::Schema.define(version: 20150502225728) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "directions", force: true do |t|
+    t.text     "name"
+    t.integer  "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "directions", ["recipe_id"], name: "index_directions_on_recipe_id"
+
+  create_table "ingredients", force: true do |t|
+    t.string   "name"
+    t.integer  "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "ingredients", ["recipe_id"], name: "index_ingredients_on_recipe_id"
 
   create_table "interests", force: true do |t|
     t.string   "name"
@@ -46,6 +64,18 @@ ActiveRecord::Schema.define(version: 20150502225728) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "recipes", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "relationships", force: true do |t|

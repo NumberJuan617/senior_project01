@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get 'about' => 'main_static_pages#about'
   get 'contact' => 'main_static_pages#contact'
   get 'home' => 'main_static_pages#home'
-  get 'recipe' => 'main_static_pages#recipe'
   get 'contact' => 'main_static_pages#contact'
   get 'resources' => 'main_static_pages#resources'
   
@@ -18,6 +17,9 @@ Rails.application.routes.draw do
   #user edits controller routes
   get 'addProfileContent' =>'user_edits#add'
   get 'manageProfileContent' =>'user_edits#home'
+
+  #recipes
+  get 'allRecipes' => 'recipes#index'
 
 
   #following three  routes below may not be used 
@@ -70,6 +72,8 @@ Rails.application.routes.draw do
 
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
+
+  resources :recipes
 
 end
 

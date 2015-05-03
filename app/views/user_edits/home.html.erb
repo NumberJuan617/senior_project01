@@ -7,22 +7,22 @@
 			<div class="col-md-2 column"> <!-- Interest-->
 				<h2>Interests</h2>
 
-				<%=link_to 'Add Interest', addInterest_path, class:"btn btn-primary" %>
+				<%=link_to 'Add Interest', addInterest_path, class:"btn btn-primary btn-block" %>
 
 				<table class= "table table-hover table-condensed  alert alert-info">
 					<tr>
-						<th class="text-center">Interests Name</th>
+						<th class="text-center">Your Interests</th>
 						<th class="text-center alert alert-danger"><b>DEL</b></th>
 					</tr>
 					
 					<% @userInterestsBoard.each do |i| %>
 						<tr>
-							<td>
+							<td class="active">
 								<%= i.interest.name %>
 							</td>
-							<td class="alert alert-danger">
+							<td >
 								<%=
-									link_to 'X', i, method: :delete
+									link_to 'X', i, method: :delete, class:"btn btn-danger"
 								%>
 							</td>
 						</tr>
@@ -33,23 +33,23 @@
 			<div class="col-md-2 column">
 				<h2>Activities</h2>
 
-				<%=link_to 'Add Activity', addActivity_path, class:"btn btn-primary" %>
+				<%=link_to 'Add Activity', addActivity_path, class:"btn btn-primary btn-block" %>
 
 				<table class= "table table-hover table-condensed  alert alert-info">
 					<tr>
-						<th class="text-center">Activities Name</th>
+						<th class="text-center">Your Activities</th>
 						<th class="text-center alert alert-danger"><b>DEL</b></th>
 
 					</tr>
 					
 					<% @userActivitiesBoard.each do |a| %>
 						<tr>
-							<td>
+							<td class="active">
 								<%= a.activity.name %>
 							</td>
-							<td class="alert alert-danger">
+							<td >
 								<%=
-									link_to 'X', a, method: :delete
+									link_to 'X', a, method: :delete, class:"btn btn-danger"
 								%>
 							</td>
 						</tr>
@@ -61,23 +61,23 @@
 
 			<div class="col-md-2 column">
 				<h2>Sports</h2>			
-				<%=link_to 'Add Sport', addSport_path, class:"btn btn-primary" %>
+				<%=link_to 'Add Sport', addSport_path, class:"btn btn-primary btn-block" %>
 
 				<table class= "table table-hover table-condensed  alert alert-info">
 					<tr>
-						<th class="text-center">Sport Name</th>
+						<th class="text-center">Your Sport</th>
 						<th class="text-center alert alert-danger"><b>DEL</b></th>
 
 					</tr>
 
 					<% @userSportsBoard.each do |s| %>
 						<tr>
-							<td>
+							<td class="active">
 								<%= s.sport.name %>
 							</td>
-							<td class="alert alert-danger">
+							<td >
 								<%=
-									link_to 'X', s, method: :delete
+									link_to 'X', s, method: :delete, class:"btn btn-danger"
 								%>
 							</td>
 						</tr>
@@ -88,23 +88,23 @@
 
 			<div class="col-md-2 column">
 				<h2>Movies</h2>			
-				<%=link_to 'Add Movie', addMovie_path, class:"btn btn-primary" %>
+				<%=link_to 'Add Movie', addMovie_path, class:"btn btn-primary btn-block" %>
 
 				<table class= "table table-hover table-condensed  alert alert-info">
 					<tr>
-						<th class="text-center">Movie Name</th>
+						<th class="text-center">Your Movies</th>
 						<th class="text-center alert alert-danger"><b>DEL</b></th>
 
 					</tr>
 
 					<% @userMoviesBoard.each do |m| %>
 						<tr>
-							<td>
+							<td class="active">
 								<%= m.movie.name %>
 							</td>
-							<td class="alert alert-danger">
+							<td >
 								<%=
-									link_to 'X', m, method: :delete
+									link_to 'X', m, method: :delete, class:"btn btn-danger"
 								%>
 							</td>
 						</tr>
@@ -115,23 +115,23 @@
 
 			<div class="col-md-2 column">
 				<h2>Books</h2>			
-				<%=link_to 'Add New Book', addBook_path, class:"btn btn-primary" %>
+				<%=link_to 'Add New Book', addBook_path, class:"btn btn-primary btn-block" %>
 
 				<table class= "table table-hover table-condensed  alert alert-info">
 					<tr>
-						<th class="text-center">Book Name</th>
+						<th class="text-center">Your Books</th>
 						<th class="text-center alert alert-danger"><b>DEL</b></th>
 
 					</tr>
 
 					<% @userBooksBoard.each do |b| %>
 						<tr>
-							<td>
+							<td class="active">
 								<%= b.book.name %>
 							</td>
-							<td class="alert alert-danger">
+							<td >
 								<%=
-									link_to 'X', b, method: :delete
+									link_to 'X', b, method: :delete, class:"btn btn-danger" 
 								%>
 							</td>
 						</tr>
@@ -142,23 +142,23 @@
 
 			<div class="col-md-2 column">
 				<h2>Television Shows</h2>			
-				<%=link_to 'Add New TV Show', addTvshow_path, class:"btn btn-primary" %>
+				<%=link_to 'Add New TV Show', addTvshow_path, class:"btn btn-primary btn-block" %>
 
 				<table class= "table table-hover table-condensed  alert alert-info">
 					<tr>
-						<th class="text-center">TV Show Name</th>
+						<th class="text-center">Your TV shows</th>
 						<th class="text-center alert alert-danger"><b>DEL</b></th>
 
 					</tr>
 
 					<% @userTvshowsBoard.each do |tv| %>
 						<tr>
-							<td>
+							<td class="active">
 								<%= tv.tvshow.name %>
 							</td>
-							<td class="alert alert-danger">
+							<td >
 								<%=
-									link_to 'X', tv, method: :delete
+									link_to 'X', tv, method: :delete, class:"btn btn-danger"
 								%>
 							</td>
 						</tr>
@@ -171,9 +171,33 @@
 
 		<div class="row">
 
-			<div class="col-md-2 column">
-				<h2>Recipes</h2>
-				<p>Recipes Drop Down Menu Here</p>
+			<div class="col-md-12 column">
+				<h2>My Recipes</h2>
+
+				<%=link_to 'Add a Recipe', new_recipe_path, class:"btn btn-primary btn-block" %>
+
+
+				<table class= "table table-hover table-condensed  alert alert-info">
+					<tr>
+						<th class="text-center">My Recipes </th>
+						<th class="text-center alert alert-danger"><b>DEL</b></th>
+
+					</tr>
+
+					<% @userRecipes.each do |r| %>
+						<tr >
+							<td class="active">
+								<p><%= r.title %></p>
+							</td>
+							<td >
+								<%=
+									link_to 'X', r, method: :delete, class:"btn btn-danger"
+								%>
+							</td>
+						</tr>
+					<% end %>
+
+				</table>
 			</div>
 		</div>
 

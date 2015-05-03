@@ -16,7 +16,10 @@ gem 'coffee-rails',         '4.1.0'
 gem 'jquery-rails',         '4.0.0.beta2'
 gem 'turbolinks',           '2.3.0'
 gem 'jbuilder',             '2.2.3'
-gem 'haml',					'4.0.6'
+gem 'haml',					'4.0.6'#different syntax for html 
+gem 'simple_form',			'3.0.2'#form
+gem 'paperclip',			'4.2.0'#image uploader
+gem 'cocoon',				'1.2.6'#nested form jquery
 gem 'sdoc',                 '0.4.0', group: :doc
 
 group :development, :test do

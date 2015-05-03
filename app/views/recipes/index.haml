@@ -1,0 +1,17 @@
+- @recipe.each_slice(3) do |recipes|
+	.row
+		- recipes.each do |recipe|
+			.col-md-4
+				.recipe
+					.image_wrapper
+						= link_to recipe do
+							= image_tag recipe.image.url(:medium)
+					%h2= link_to recipe.title, recipe
+
+	.row
+		.col-md-12
+			- if !logged_in? 
+				= link_to "Log in or create an account today!", login_path, class: "btn btn-primary btn-lg"
+
+
+		

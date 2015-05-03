@@ -14,8 +14,8 @@ class UserEditsController < ApplicationController
       @userBooksBoard = @user.user_books
       @userTvshowsBoard = @user.user_tvshows
 
-      @tvshows = Tvshow.all
 
+      @userRecipes = @user.recipes
       #user information to add within the page
     else
       redirect_to root_url

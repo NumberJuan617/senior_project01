@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 	before_save   :downcase_email
 	before_create :create_activation_digest
 
+	has_many :recipes, dependent: :destroy
+
 
 	has_many :active_relationships, class_name:  "Relationship",
 		                          foreign_key: "follower_id",
