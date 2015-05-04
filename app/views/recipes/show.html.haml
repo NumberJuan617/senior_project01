@@ -9,7 +9,7 @@
 				%p
 					Submitted by
 					= @recipe.user.email
-					= link_to @recipe.user.email, @recipe.user
+					= link_to @recipe.user.fname, @recipe.user
 
 
 	.row
@@ -29,7 +29,7 @@
 
 	.row
 		.col-md-12
-			= link_to "Back", root_path, class: "btn btn-default"
-			- if logged_in? && !@recipe.user.id = @user.id
+			= link_to "Back", allRecipes_path, class: "btn btn-default"
+			- if logged_in? && @recipe.user.id == @current_user.id
 				= link_to "Edit", edit_recipe_path, class: "btn btn-default"
 				= link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default"
