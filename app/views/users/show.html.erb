@@ -2,10 +2,11 @@
 <% if logged_in? %>
 	
 	<div class="row clearfix">
-		<div class="col-md-4 column">
+		<div class="col-md-4 column alert alert-info">
 			<!-- This will contain the users profile information and content-->
 			<div class="row ">
 				<% if @user.picture?  %>
+					
 					<div class="row text-center">
 						<%= image_tag @user.picture.url if @user.picture? %>
 					</div>	
@@ -34,7 +35,6 @@
 
 					</div>	
 				<%else%>
-
 
 					<div class="row">
 
@@ -102,43 +102,43 @@
 			
 			<h2>Profile Information</h2>
 
-			<div class="row lert alert-info text-center ">
+			<div class="row text-center ">
 			<!-- User profile content -->
 				<h2>Activities</h2>
 				<% @userActivities.each do |ua| %>
-					<u><%= ua.activity.name %></u> ,
+					<u><%= ua.activity.name %></u>
 				<% end %>
 
 				<h2>Interests</h2>
 				<% @userInterests.each do |ui| %>
-					<u><%= ui.interest.name %></u>  ,
+					<u><%= ui.interest.name %></u>  
 				<% end %>
 
 				<h2>Sports</h2>
 				<% @userSports.each do |us| %>
-					<u><%= us.sport.name %></u>  ,
+					<u><%= us.sport.name %></u> 
 				<% end %>
 
 				<h2>Movies</h2>
 				<% @userMovies.each do |um| %>
-					<u><%= um.movie.name %></u>  ,
+					<u><%= um.movie.name %></u> 
 				<% end %>
 
 				<h2>Books</h2>
 				<% @userBooks.each do |ub| %>
-					<u><%= ub.book.name %></u>  ,
+					<u><%= ub.book.name %></u> 
 				<% end %>
 
 				<h2>TV Shows</h2>
 				<% @userTvshows.each do |utv| %>
-					<u><%= utv.tvshow.name %></u>  ,
+					<u><%= utv.tvshow.name %></u> 
 				<% end %>
 			</div>
 			
 
 		</div>
-
-		<div class="col-md-8 column jumbotron">
+		<div class="col-md-1 column"></div>
+		<div class="col-md-7 column ">
 			<!-- This will contain the users posts, link to microposts, and ability to friend or follow-->
 			<div class="row">
 				<div class="col-md-6">
@@ -153,7 +153,7 @@
 
 				<%if current_user?(@user)%>
 					<div class="row">
-						<aside class="col-md-12" style="background-color:lavender;">
+						<aside class="col-md-12">
 							<h3> Add a new Micropost</h3>
 							<section class="micropost_form">
 								<%= render 'shared/micropost_form' %>
@@ -181,21 +181,6 @@
 
 	</div>
 		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

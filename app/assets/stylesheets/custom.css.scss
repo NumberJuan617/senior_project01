@@ -17,6 +17,7 @@ $gray-medium-light: #eaeaea;
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+
   }
 }
 
@@ -25,13 +26,30 @@ $gray-medium-light: #eaeaea;
 
 html {
   overflow-y: scroll;
-
+ 
 
 }
 
 body {
   padding-top: 70px;
-  background-image: image-url("background1.JPG")  
+  background-image:image-url("bg3.JPG");
+ }
+
+ .bg {
+  background-image: image-url("bg2.JPG");
+  background-repeat: no-repeat;
+
+  position: fixed;
+  width: 100%;
+  height: 700px; /*same height as jumbotron */
+  top:0;
+  left:0;
+  z-index: -1;
+}
+
+.jumbotron {
+  height: 700px;
+  background:transparent;
 }
 
 section {
@@ -55,6 +73,9 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 
+
+
+
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
@@ -68,7 +89,14 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $gray-light;
+  color: $gray-dark;
+}
+
+h3 {
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: white;
 }
 
 p {

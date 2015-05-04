@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-	    @userMicroposts = @user.microposts.paginate(page: params[:page] , :per_page => 10)
+	    @userMicroposts = @user.microposts.paginate(page: params[:page] , :per_page => 6)
 		#user profile content below
       	@micropost = current_user.microposts.build if logged_in?
 
@@ -70,14 +70,14 @@ class UsersController < ApplicationController
 	def following
 		@title = "Following"
 		@user  = User.find(params[:id])
-		@users = @user.following.paginate(page: params[:page])
+		@users = @user.following.paginate(page: params[:page], :per_page => 10)
 		render 'show_follow'
 	end
 
 	def followers
 		@title = "Followers"
 		@user  = User.find(params[:id])
-		@users = @user.followers.paginate(page: params[:page])
+		@users = @user.followers.paginate(page: params[:page], :per_page => 10)
 		render 'show_follow'
 	end
 
