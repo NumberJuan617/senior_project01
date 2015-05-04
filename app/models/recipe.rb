@@ -4,6 +4,8 @@ class Recipe < ActiveRecord::Base
 	has_many :ingredients
 	has_many :directions
 
+  	mount_uploader :picture, RecipeUploader
+
 	accepts_nested_attributes_for :ingredients,
 									reject_if: proc { |attributes| attributes['name'].blank? },
 									allow_destroy: true
@@ -11,8 +13,8 @@ class Recipe < ActiveRecord::Base
 									reject_if: proc { |attributes| attributes['name'].blank? },
 									allow_destroy: true
 
-    validates :title, :description, :image, presence: true
+    validates :title, :description, :picture, presence: true
 
-	has_attached_file :image, styles: { :medium => "400#400" }
-	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+	#has_attached_file :image, styles: { :medium => "400#400" }
+	#validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 end

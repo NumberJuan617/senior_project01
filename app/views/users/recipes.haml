@@ -5,11 +5,11 @@
 	.row
 
 		- recipes.each do |recipe|
-			.col-md-3
+			.col-md-3	
 				.recipe
 					.image_wrapper
 						= link_to recipe do
-							= image_tag recipe.image.url(:medium)
+							= image_tag recipe.picture
 					%h2= link_to recipe.title, recipe
 	.row
 		.col-md-12

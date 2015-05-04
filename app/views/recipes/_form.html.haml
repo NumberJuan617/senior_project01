@@ -10,8 +10,7 @@
 	.panel-body
 		= f.input :title, input_html: { class: 'form-control' }
 		= f.input :description, input_html: { class: 'form-control' }
-		= f.input :image, input_html: { class: 'form-control' }
-
+		= f.file_field :picture, input_html: { class: 'form-control' }
 		.row
 			.col-md-6
 				%h3 Ingredients
@@ -30,3 +29,14 @@
 						= link_to_add_association 'Add Direction', f, :directions, class: "btn btn-default add-button"
 
 	= f.button :submit, class: "btn btn-primary"
+
+
+
+<script type="text/javascript">
+$('#micropost_picture').bind('change', function() {
+var size_in_megabytes = this.files[0].size/1024/1024;
+if (size_in_megabytes > 5) {
+alert('Maximum file size is 5MB. Please choose a smaller file.');
+}
+});
+</script>
