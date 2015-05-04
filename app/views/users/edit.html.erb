@@ -3,12 +3,21 @@
 <div class="row">
 
 	<div class="col-md-5 "> 
-		
+			
+		<div class="gravatar_edit">
+			<%= gravatar_for @user %>
+			<a href="http://gravatar.com/emails" target=_blank>Change Gravatar</a>
+		</div>
+			
 
 		<h1>Edit Account</h1>
-
-		<%= form_for(@user) do |f| %>
+		<%= form_for(@user, html: { multipart: true }) do |f| %>
 			<%= render 'shared/error_messages', object: f.object %>
+
+
+			<h3>Add or Change profile your image</h3>
+    		<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+
 			<%= f.label :fname,'First Name' %>
 			<%= f.text_field :fname, class: 'form-control' %>
 
@@ -66,6 +75,16 @@
 
 			<%= f.submit "Save changes", class: "btn btn-primary" %>
 		<% end %>
+
+		<script type="text/javascript">
+			$('#micropost_picture').bind('change', function() {
+			var size_in_megabytes = this.files[0].size/1024/1024;
+			if (size_in_megabytes > 5) {
+			alert('Maximum file size is 5MB. Please choose a smaller file.');
+			}
+			});
+		</script>
+
 	</div>
 
 	<div class="col-md-2 column"></div>
@@ -75,28 +94,9 @@
 		<div class="row clearfix text-center">
 			<h1>Edit Profile Settings</h1>
 
-			<h2>Show current set of interests, sports, activities etc</h2>
-			<div class="row-md-3 column">
-				<h2>Current Interests</h2>
-				<p>Show the users current interests here</p>
-			</div>
-
-			<div class="row-md-3 column">
-				<h2>Current Activities</h2>
-				<p>Show the users current activities here</p>
-			</div>
-
-			<div class="row-md-3">
-				<h2>Current Sports</h2>
-				<p>Show the users current sports here</p>
-			</div>
-
 			<div class="row-md-3 column"></br></br></br>
 				<%= link_to "Edit your profile content", manageProfileContent_path, class: "btn btn-lg btn-primary" %>
-
 			</div>
-
-
 
 		</div>
 	</div>

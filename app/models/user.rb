@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 	before_save   :downcase_email
 	before_create :create_activation_digest
 
+	#user profile photo
+  	mount_uploader :picture, UserUploader 
+
 	has_many :recipes, dependent: :destroy
 
 
@@ -54,12 +57,24 @@ class User < ActiveRecord::Base
 	has_secure_password	
 	validates :password, length: { minimum: 6 }
 
+	#user photo validation
+	validate  :picture_size
+
+
+
+    # Validates the size of an uploaded picture.
+    def picture_size
+      if picture.size > 5.megabytes
+        errors.add(:picture, "should be less than 5MB")
+      end
+    end
+
 	# Returns the hash digest of the given string.
 	def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
-  end
+	    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+	                                                  BCrypt::Engine.cost
+	    BCrypt::Password.create(string, cost: cost)
+ 	end
 
 	# Returns a random token.
 	def User.new_token

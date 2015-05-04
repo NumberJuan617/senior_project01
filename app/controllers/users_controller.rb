@@ -4,7 +4,12 @@ class UsersController < ApplicationController
 #only permit the user to edit and update their profile if they are logged in
   	before_action :correct_user,   only: [:edit, :update]#ensures the correct user before editing anyone
   	before_action :admin_user,     only: :destroy
+  	
   	include UsersHelper
+
+  	def recipes
+  		@user = User.find(params[:id])
+  	end
   	
   	def index
   		@users = User.paginate(page: params[:page], :per_page => 10)
@@ -82,7 +87,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:fname, :lname, :age, :email, :bio, :street, :gender, :state, :phone,  :city, :zip, :country, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :picture)
     end
     
 

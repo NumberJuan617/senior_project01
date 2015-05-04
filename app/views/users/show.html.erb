@@ -2,36 +2,89 @@
 <% if logged_in? %>
 	
 	<div class="row clearfix">
-		<div class="col-md-3 column">
+		<div class="col-md-4 column">
 			<!-- This will contain the users profile information and content-->
 			<div class="row ">
-				<div class="col-md-4">
-					<!-- User icon -->
-					<%= gravatar_for @user %> 
-				</div>
-				
-				<div class="col-md-8">
-					<!--User name, last name, age, & gender for now -->
-					<div class="row"><b><%= @user.fname %> <%= @user.lname %></b></div>
-					<div class="row">Age: <b><%= @user.age%></b> Gender: <b> <%= @user.gender %></b></div>
+				<% if @user.picture?  %>
+					<div class="row text-center">
+						<%= image_tag @user.picture.url if @user.picture? %>
+					</div>	
 
 					<div class="row">
-						<address>
-							<strong>Address</strong><br />
-							<%= @user.street%><br />
-							<%= @user.city%>, <%= @user.state%> <%= @user.zip%><br />
-							<abbr title="Phone">P:</abbr> <%= @user.phone%>
-						</address>
+						
 
-					</div>
-				</div>
+						<div class="text-center">
+							<!--User name, last name, age, & gender for now -->
+							<div class="row">
+								<b><%= @user.fname %> <%= @user.lname %></b>
+								    | Age:  <b>  <%= @user.age%></b>
+								    | Gender: <b> <%= @user.gender %></b>
+							</div>
+							<div class="row">
+								<address>
+									<strong>Address</strong><br />
+									<%= @user.street%><br />
+									<%= @user.city%>, <%= @user.state%> <%= @user.zip%><br />
+									<abbr title="Phone">P:</abbr> <%= @user.phone%>
+								</address>
+
+							</div>
+
+						</div>
+
+					</div>	
+				<%else%>
+
+
+					<div class="row">
+
+
+							<!--User name, last name, age, & gender for now -->
+							<div class="row clearfix">
+								<div class="row div-center">
+									
+									<%= gravatar_for @user %>
+
+								</div> 
+								<!--User name, last name, age, & gender for now -->
+								<div class="row text-center"><b><%= @user.fname %> <%= @user.lname %></b></div>
+								<div class="row text-center">Age: <b><%= @user.age%></b> Gender: <b> <%= @user.gender %></b></div>
+
+
+							</div>
+
+							<div class="row text-center">
+								<address>
+									<strong>Address</strong><br />
+									<%= @user.street%><br />
+									<%= @user.city%>, <%= @user.state%> <%= @user.zip%><br />
+									<abbr title="Phone">P:</abbr> <%= @user.phone%>
+								</address>
+
+							</div>
+					</div>	
+
+
+				<%end%>
+
+
+
+
+				
+
 			</div>
 			
 			<div class="row">
-				<section class="stats">
-				<%= render 'shared/stats' %>
-				</section>
-
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<div class="row">				
+						<section class="stats">
+						<%= render 'shared/stats' %>
+						</section>
+					</div>
+				</div>
+				<div class="col-md-3"></div>
+				
 				
 			</div>
 
@@ -84,17 +137,16 @@
 			
 
 		</div>
-		<div class="col-md-1 column "></div>
 
 		<div class="col-md-8 column jumbotron">
 			<!-- This will contain the users posts, link to microposts, and ability to friend or follow-->
 			<div class="row">
 				<div class="col-md-6">
-								    <%= render 'follow_form' if logged_in? %>
+				    <%= render 'follow_form' if logged_in? %>
 
 				</div>
 				<div class="col-md-6">
-					<%= link_to "Recipes", manageProfileContent_path, class: "btn btn-primary btn-lg btn-block" %>
+					<%= link_to "Recipes", userRecipes_path(:id => @user.id), class: "btn btn-primary btn-lg btn-block" %>
 
 
 				</div>
